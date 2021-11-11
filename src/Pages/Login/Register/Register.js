@@ -71,11 +71,11 @@ const Register = () => {
                                     <TextField
                                         required
                                         fullWidth
-                                        onBlur={handleOnBlur}
                                         label="Your Name"
-                                        name="name"
-                                        id="standard-basic"
                                         autoFocus
+                                        onBlur={handleOnBlur}
+                                        name="displayName"
+                                        id="standard-basic"
                                         autoComplete="given-name"
                                     />
                                 </Grid>

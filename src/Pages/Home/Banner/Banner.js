@@ -13,7 +13,7 @@ const bannerBg = {
 const verticalCenter = {
     display: ' flex',
     alignItems: 'center',
-    height: 600,
+    height: 650,
 
 }
 
@@ -37,7 +37,7 @@ const Banner = () => {
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6} style={verticalCenter}>
-                        <img style={{ minWidth: '350px', maxwidth: '500px' }} src={banner} alt="" />
+                        <img style={{ minwidth: '350px', maxWidth: "500px" }} src={banner} alt="" />
                     </Grid>
                 </Grid>
             </Container>

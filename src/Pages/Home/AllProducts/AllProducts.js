@@ -1,6 +1,7 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
 import { Box, positions } from '@mui/system';
 import React from 'react';
+import { useHistory } from 'react-router';
 import useProduct from '../../../hooks/useProduct';
 import bg from '../../../Images/bg_product.jpg'
 
@@ -17,6 +18,13 @@ const verticalCenter = {
 
 const AllProducts = () => {
     const [products] = useProduct();
+
+    const history = useHistory();
+
+    const handleDetails = (id) => {
+        const uri = `/productDetail/${id}`;
+        history.push(uri);
+    }
     return (
         <Box>
             <Box style={bannerBg} sx={{}}>
@@ -55,7 +63,13 @@ const AllProducts = () => {
                                             Available Size: {product.size}
                                         </Typography>
                                     </CardContent>
+                                    <CardActions>
+                                        <Button onClick={() => handleDetails(product?._id)} size="small" color="primary">
+                                            Purchase
+                                        </Button>
+                                    </CardActions>
                                 </CardActionArea>
+
                             </Card>
                         </Grid>)
                     }

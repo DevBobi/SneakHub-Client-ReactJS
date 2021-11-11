@@ -1,28 +1,38 @@
 
-import { Container } from '@mui/material';
+import { Button, Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import bg from '../../Images/404_space.jpg'
-
-const notFound = {
-    background: `url(${bg})`,
-
-}
-
-const verticalCenter = {
-    display: ' flex',
-    alignItems: 'center',
-    height: 400,
-
-}
+import { NavLink } from 'react-router-dom';
+import notFound from '../../Images/404.png'
 
 const NotFound = () => {
     return (
-        <Box style={notFound} sx={{ flexGrow: 1 }}>
-            <Container sx={{ flexGrow: 1 }}>
+        <Container>
+            <Box item xs={12} md={12}
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    mt: 2
+                }}>
 
-            </Container>
-        </Box>
+                <img style={{ height: "80vh", width: "90vh" }} src={notFound}
+                    alt=""
+                />
+            </Box>
+            <Grid sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                mt: 2
+            }}>
+                <NavLink style={{ textDecoration: "none" }} to="/">
+                    <Button variant="outlined" color="error" >
+                        Go Back
+                    </Button>
+                </NavLink>
+            </Grid>
+        </Container>
     );
 };
 

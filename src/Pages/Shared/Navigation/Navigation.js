@@ -44,7 +44,9 @@ const Navigation = () => {
                     <Container>
                         <Toolbar>
                             <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                                SneakHub
+                                <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/'>
+                                    SneakHub
+                                </NavLink>
                             </Typography>
                             {isMatches ? <IconButton
                                 size="large"

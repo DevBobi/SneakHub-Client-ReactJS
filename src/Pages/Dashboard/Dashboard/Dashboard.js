@@ -21,12 +21,13 @@ import {
     Link,
     useRouteMatch
 } from "react-router-dom";
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import AddProducts from '../AddProduct/AddProducts';
 import { Home, HomeMini } from '@mui/icons-material';
-import DashboardHome from '../DashboardHome/DashboardHome';
+import MyOrders from '../MyOrders/MyOrders';
+import ManageOrders from '../ManageOrders/ManageOrders';
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 function Dashboard(props) {
     const { window } = props;
@@ -41,6 +42,9 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
+            <Link style={{ textDecoration: 'none', color: 'blue' }} to='/'>
+                <Button color="inherit">Products</Button>
+            </Link>
             <List>
                 <ListItem  >
                     <ListItemIcon>
@@ -50,12 +54,13 @@ function Dashboard(props) {
                         <Button color="inherit">Home</Button>
                     </Link>
                 </ListItem>
-                <ListItem  >
+                <ListItem button >
                     <ListItemIcon>
                         <Home></Home>
                     </ListItemIcon>
-                    <Link style={{ textDecoration: 'none', color: 'blue' }} to={`${url}/addProduct`}>
-                        <Button color="inherit">Add Product</Button>
+
+                    <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addProduct`}>
+                        <ListItemText primary="Add Product" />
                     </Link>
                 </ListItem>
             </List>
@@ -94,7 +99,7 @@ function Dashboard(props) {
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+
                 <Drawer
                     container={container}
                     variant="temporary"
@@ -126,20 +131,20 @@ function Dashboard(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Switch>
-                    <Route exact path={path}>
-                        <DashboardHome></DashboardHome>
-                    </Route>
-                    <Route exact path={path}>
-                        <AddProducts></AddProducts>
-                    </Route>
-                    {/* <AdminRoute path={`${path}/makeAdmin`}>
-                        <MakeAdmin></MakeAdmin>
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/addDoctor`}>
-                        <AddDoctor></AddDoctor>
-                    </AdminRoute> */}
-                </Switch>
+                <Typography paragraph>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <MyOrders></MyOrders>
+                        </Grid>
+                    </Grid>
+                </Typography>
+                <Typography paragraph>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <ManageOrders></ManageOrders>
+                        </Grid>
+                    </Grid>
+                </Typography>
             </Box>
         </Box>
     );

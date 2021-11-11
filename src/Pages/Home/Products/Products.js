@@ -9,7 +9,7 @@ import Product from '../Product/Product';
 
 const Products = () => {
     const [products] = useProduct();
-    const newProduct = products.slice(0, 6);
+    const newProduct = products.slice(8, 14);
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Container>

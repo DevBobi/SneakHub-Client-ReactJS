@@ -25,11 +25,19 @@ const AddProducts = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input {...register("title",)}
                     placeholder="Name" required />
-                <input {...register("size")} placeholder="Size" required />
-                <input type="number" {...register("price")} placeholder="Price" required />
+                <input
+                    {...register("size")}
+                    placeholder="Size"
+                    required />
+                <input
+                    type="number"
+                    {...register("price")}
+                    placeholder="Price"
+                    required />
                 <input {...register("img")} placeholder="Img Url" required />
                 <input type="submit" />
             </form>
+
         </div>
     );
 };
