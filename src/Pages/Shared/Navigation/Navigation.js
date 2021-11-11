@@ -1,0 +1,115 @@
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Container } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { NavLink } from 'react-router-dom';
+import Login from '../../Login/Login/Login';
+import Register from '../../Login/Register/Register';
+import useAuth from '../../../hooks/useAuth';
+
+
+const Navigation = () => {
+
+    const theme = useTheme();
+    const isMatches = useMediaQuery(theme.breakpoints.down('md'));
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+
+    // useAuth
+
+    const { user, logout } = useAuth()
+
+
+    return (
+        <>
+            <Box sx={{ flexGrow: 1 }} >
+                <AppBar position="static" style={{ backgroundColor: "white", color: "black" }}>
+                    <Container>
+                        <Toolbar>
+                            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+                                SneakHub
+                            </Typography>
+                            {isMatches ? <IconButton
+                                size="large"
+                                edge="start"
+                                color="inherit"
+                                aria-label="menu"
+                                sx={{ mr: 2 }}
+                            >
+                                <MenuIcon id="basic-button"
+                                    style={{ color: "black" }}
+                                    aria-controls="basic-menu"
+                                    aria-haspopup="true"
+                                    aria-expanded={open ? 'true' : undefined}
+                                    onClick={handleClick} />
+                            </IconButton>
+                                :
+                                <Box>
+                                    {user?.email ?
+                                        <div>
+                                            <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/dashboard'>
+                                                <Button color="inherit">Dashboard</Button>
+                                            </NavLink>
+
+                                            <Button style={{ color: 'black' }} onClick={logout} color="inherit">Logout</Button>
+                                        </div>
+                                        :
+                                        <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/login'>
+                                            <Button style={{ color: 'black' }} color="inherit">Login</Button>
+                                        </NavLink>
+                                    }
+                                </Box>
+                            }
+
+
+                            <Menu
+                                id="basic-menu"
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={handleClose}
+                                MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                }}
+                            >
+
+                                {user?.email ?
+                                    <div>
+                                        <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/dashboard'>
+                                            <Button color="inherit">Dashboard</Button>
+                                        </NavLink>
+                                        <Button style={{ color: 'black' }} onClick={logout} color="inherit">Logout</Button>
+                                    </div>
+                                    :
+                                    <div>
+                                        <Button style={{ color: 'black' }} color="inherit">Login</Button>
+                                    </div>}
+
+                            </Menu>
+                        </Toolbar>
+                    </Container>
+                </AppBar>
+
+            </Box>
+
+        </>
+    );
+};
+
+export default Navigation;
