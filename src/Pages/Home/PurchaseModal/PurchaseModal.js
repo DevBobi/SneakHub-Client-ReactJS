@@ -33,31 +33,34 @@ const PurchaseModal = ({ bookingOpen, handleBookingClose, singleProduct, setBook
     }
 
     const handlePurchaseSubmit = e => {
-        // collect data
-        const order = {
-            ...bookingInfo,
-            status: "pending",
-            email: user?.email,
-            date: new Date().toLocaleDateString(),
-            singleProduct
-        }
-        // send to the server
-        fetch('http://localhost:5000/orders', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(order)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    // window.confirm("Are you sure you want to proceed order?");
-                    setBookingSuccess(true);
-                    handleBookingClose();
-                }
+        const proceed = window.confirm('Are you sure you want to proceed order?');
+        if (proceed) {
+            // collect data
+            const order = {
+                ...bookingInfo,
+                status: "pending",
+                email: user?.email,
+                date: new Date().toLocaleDateString(),
+                singleProduct
+            }
+            // send to the server
+            fetch('http://localhost:5000/orders', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(order)
             })
-        e.preventDefault();
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        // window.confirm("Are you sure you want to proceed order?");
+                        setBookingSuccess(true);
+                        handleBookingClose();
+                    }
+                })
+            e.preventDefault();
+        }
     }
     return (
         <div>
