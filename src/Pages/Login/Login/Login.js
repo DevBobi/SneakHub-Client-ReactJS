@@ -29,10 +29,14 @@ const theme = createTheme();
 const Login = () => {
 
     const [loginData, setLoginData] = React.useState({});
-    const { user, loginUser, isLoading, authError } = useAuth();
+    const { user, signInWithGoogle, loginUser, isLoading, authError } = useAuth();
 
     const location = useLocation();
     const history = useHistory();
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history)
+    }
 
     const handleOnChange = e => {
         const field = e.target.name;
@@ -113,6 +117,14 @@ const Login = () => {
                                     <Button variant="text">New User? Please Register</Button>
                                 </NavLink>
                             </Grid>
+                            <Button
+                                onClick={handleGoogleSignIn}
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                            >
+                                Sign In Using Google
+                            </Button>
                         </Grid>
                         {isLoading && <CircularProgress />}
                         {user?.email && <Alert severity="success">Login Successfully!</Alert>}

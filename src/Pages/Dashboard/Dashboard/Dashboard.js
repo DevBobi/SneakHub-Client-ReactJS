@@ -26,6 +26,8 @@ import AddProducts from '../AddProduct/AddProducts';
 import { Home, HomeMini } from '@mui/icons-material';
 import MyOrders from '../MyOrders/MyOrders';
 import ManageOrders from '../ManageOrders/ManageOrders';
+import DashboardHome from '../DashboardHome/DashboardHome';
+import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 200;
 
@@ -33,6 +35,7 @@ function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
+    const { logout } = useAuth();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -42,27 +45,50 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
-            <Link style={{ textDecoration: 'none', color: 'blue' }} to='/'>
-                <Button color="inherit">Products</Button>
-            </Link>
             <List>
-                <ListItem  >
-                    <ListItemIcon>
-                        <Home></Home>
-                    </ListItemIcon>
-                    <Link style={{ textDecoration: 'none', color: 'black' }} to='/'>
-                        <Button color="inherit">Home</Button>
-                    </Link>
-                </ListItem>
-                <ListItem button >
-                    <ListItemIcon>
-                        <Home></Home>
-                    </ListItemIcon>
+                <Link style={{ textDecoration: 'none', color: 'black' }} to='/'>
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Home></Home>
+                        </ListItemIcon>
+                        <ListItemText primary="Home" />
+                    </ListItem>
+                </Link>
+                <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}`}>
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Home></Home>
+                        </ListItemIcon>
+                        <ListItemText primary="Dashboard" />
+                    </ListItem>
+                </Link>
+                <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/myOrders`}>
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Home></Home>
+                        </ListItemIcon>
+                        <ListItemText primary="My Orders" />
+                    </ListItem>
+                </Link>
 
-                    <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addProduct`}>
-                        <ListItemText primary="Add Product" />
-                    </Link>
-                </ListItem>
+                <Link style={{ textDecoration: 'none', color: 'black' }} to='/'>
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Home></Home>
+                        </ListItemIcon>
+                        <ListItemText primary="Review" />
+                    </ListItem>
+                </Link>
+
+                <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addProducts`}>
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Home></Home>
+                        </ListItemIcon>
+                        <ListItemText primary="Add Products" />
+                    </ListItem>
+                </Link>
+
             </List>
         </div>
     );
@@ -131,30 +157,24 @@ function Dashboard(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Typography paragraph>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <MyOrders></MyOrders>
-                        </Grid>
-                    </Grid>
-                </Typography>
-                <Typography paragraph>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <ManageOrders></ManageOrders>
-                        </Grid>
-                    </Grid>
-                </Typography>
+                <Switch>
+                    <Route exact path={path}>
+                        <DashboardHome></DashboardHome>
+                    </Route>
+                    <Route path={`${path}/myOrders`}>
+                        <MyOrders></MyOrders>
+                    </Route>
+                    <Route path={`${path}/addProducts`}>
+                        <AddProducts></AddProducts>
+                    </Route>
+                </Switch>
             </Box>
         </Box>
     );
 }
 
 Dashboard.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
+
     window: PropTypes.func,
 };
 
