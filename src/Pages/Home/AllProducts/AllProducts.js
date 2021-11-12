@@ -25,6 +25,7 @@ const AllProducts = () => {
         const uri = `/productDetail/${id}`;
         history.push(uri);
     }
+
     return (
         <Box>
             <Box style={bannerBg} sx={{}}>

@@ -10,6 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
+import { Box } from '@mui/system';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -40,7 +41,7 @@ const ManageOrders = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setOrders(data));
-    }, [status]);
+    }, [status, orders]);
 
     const updateStatus = (id) => {
         axios.put(`http://localhost:5000/updateOrder`, { id })
@@ -67,7 +68,15 @@ const ManageOrders = () => {
     };
     return (
         <Container>
-            <h2>Manage Orders: {orders.length}</h2>
+            <Typography sx={{
+                mb: 5,
+                mx: 'auto',
+                width: 500,
+                borderRadius: 1,
+                textAlign: 'center',
+            }}
+                variant="h3"
+            >All Orders: {orders.length}</Typography>
             <TableContainer component={Paper}>
                 <Table sx={{ Width: 1000 }} aria-label="orders table">
                     <TableHead>

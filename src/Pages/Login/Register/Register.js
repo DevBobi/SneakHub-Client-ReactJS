@@ -74,7 +74,7 @@ const Register = () => {
                                         label="Your Name"
                                         autoFocus
                                         onBlur={handleOnBlur}
-                                        name="displayName"
+                                        name="name"
                                         id="standard-basic"
                                         autoComplete="given-name"
                                     />

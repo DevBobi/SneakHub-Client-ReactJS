@@ -1,9 +1,8 @@
-import { Button, Container, TextField, Typography } from '@mui/material';
+import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
-import './AddProduct.css'
 
 const AddProducts = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -20,25 +19,69 @@ const AddProducts = () => {
     }
 
     return (
-        <div className="add-service m-5">
-            <h2>Please add a service</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("title",)}
-                    placeholder="Name" required />
-                <input
-                    {...register("size")}
-                    placeholder="Size"
-                    required />
-                <input
-                    type="number"
-                    {...register("price")}
-                    placeholder="Price"
-                    required />
-                <input {...register("img")} placeholder="Img Url" required />
-                <input type="submit" />
-            </form>
 
-        </div>
+        <Container>
+            <Box
+                sx={{
+                    mt: 5,
+                    mx: 'auto',
+                    width: 500,
+                    borderRadius: 1,
+                    textAlign: 'center',
+                }}
+            >
+                <Typography variant="h3">
+                    Add A Product
+                </Typography>
+
+                <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
+                    <Grid container spacing={2} sx={{ my: 3 }}>
+                        <Grid item xs={12}>
+                            <TextField
+                                required
+                                fullWidth
+                                label="Title"
+                                id="outlined-size-small"
+                                {...register("title")}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                required
+                                fullWidth
+                                label="Size"
+                                id="outlined-size-small"
+                                {...register("size")}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                required
+                                fullWidth
+                                label="Price"
+                                id="outlined-size-small"
+                                {...register("price")}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                required
+                                fullWidth
+                                label="Image Url"
+                                id="outlined-size-small"
+                                {...register("img")}
+                                placeholder="Size"
+                            />
+                        </Grid>
+                    </Grid>
+                    <Button
+                        type="submit"
+                        variant='contained'
+                        style={{ backgroundColor: '#5CE7ED', color: "black" }}
+                    >Proceed Make Admin</Button>
+                </Box>
+            </Box>
+        </Container>
     );
 };
 

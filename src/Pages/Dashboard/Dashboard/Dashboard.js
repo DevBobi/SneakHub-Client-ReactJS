@@ -21,15 +21,16 @@ import {
 } from "react-router-dom";
 import { Button, Grid } from '@mui/material';
 import AddProducts from '../AddProduct/AddProducts';
-import { Home } from '@mui/icons-material';
+import { Add, AdminPanelSettings, Home, Logout, ProductionQuantityLimits, ShoppingBag } from '@mui/icons-material';
 import MyOrders from '../MyOrders/MyOrders';
 import ManageOrders from '../ManageOrders/ManageOrders';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import useAuth from '../../../hooks/useAuth';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import ManageProducts from '../ManageProducts/ManageProducts';
 
-const drawerWidth = 200;
+const drawerWidth = 220;
 
 function Dashboard(props) {
     const { window } = props;
@@ -80,6 +81,14 @@ function Dashboard(props) {
                             <ListItemText primary="Review" />
                         </ListItem>
                     </Link>
+                    <Link style={{ textDecoration: 'none', color: 'black' }} onClick={logout}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <Logout></Logout>
+                            </ListItemIcon>
+                            <ListItemText primary="LogOut" />
+                        </ListItem>
+                    </Link>
                 </Box>}
 
                 {admin &&
@@ -96,7 +105,7 @@ function Dashboard(props) {
                         <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addProducts`}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <Home></Home>
+                                    <Add></Add>
                                 </ListItemIcon>
                                 <ListItemText primary="Add Products" />
                             </ListItem>
@@ -105,17 +114,33 @@ function Dashboard(props) {
                         <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageOrders`}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <Home></Home>
+                                    <ShoppingBag></ShoppingBag>
                                 </ListItemIcon>
-                                <ListItemText primary="Manage Orders" />
+                                <ListItemText primary="All Orders" />
+                            </ListItem>
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageProducts`}>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <ProductionQuantityLimits></ProductionQuantityLimits>
+                                </ListItemIcon>
+                                <ListItemText primary="Manage Products" />
                             </ListItem>
                         </Link>
                         <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/makeAdmin`}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <Home></Home>
+                                    <AdminPanelSettings></AdminPanelSettings>
                                 </ListItemIcon>
                                 <ListItemText primary="Make Admin" />
+                            </ListItem>
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} onClick={logout}>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <Logout></Logout>
+                                </ListItemIcon>
+                                <ListItemText primary="LogOut" />
                             </ListItem>
                         </Link>
                     </Box>
@@ -198,6 +223,9 @@ function Dashboard(props) {
                     </Route>
                     <AdminRoute path={`${path}/manageOrders`}>
                         <ManageOrders></ManageOrders>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageProducts`}>
+                        <ManageProducts></ManageProducts>
                     </AdminRoute>
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>

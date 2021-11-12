@@ -34,10 +34,6 @@ const Login = () => {
     const location = useLocation();
     const history = useHistory();
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle(location, history)
-    }
-
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -46,10 +42,15 @@ const Login = () => {
         setLoginData(newLoginData);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (e) => {
         loginUser(loginData.email, loginData.password, location, history)
-        event.preventDefault();
-    };
+        e.preventDefault();
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history)
+    }
+
 
     return (
         <ThemeProvider theme={theme}>

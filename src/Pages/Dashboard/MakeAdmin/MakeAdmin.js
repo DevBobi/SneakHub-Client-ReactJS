@@ -2,11 +2,13 @@ import { Alert, Button, Collapse, Container, Grid, IconButton, TextField, Typogr
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
+import useAuth from '../../../hooks/useAuth';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
     const [success, setSuccess] = useState(false);
     const [open, setOpen] = React.useState(true);
+    const { token } = useAuth();
 
     const handleOnBlur = e => {
         setEmail(e.target.value);
@@ -19,6 +21,7 @@ const MakeAdmin = () => {
             fetch('http://localhost:5000/users/admin', {
                 method: 'PUT',
                 headers: {
+                    'authorization': `Bearer ${token}`,
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify(user)
