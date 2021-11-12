@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Avatar, Button, Container } from '@mui/material';
+import { Avatar, Button, Container, Typography } from '@mui/material';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -33,7 +33,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        const url = "http://localhost:5000/products";
+        const url = "https://safe-waters-12222.herokuapp.com/products";
         fetch(url)
             .then(res => res.json())
             .then(data => setProducts(data));
@@ -42,7 +42,7 @@ const ManageProducts = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/products/${id}`;
+            const url = `https://safe-waters-12222.herokuapp.com/products/${id}`;
             fetch(url, {
                 method: "DELETE",
             })
@@ -58,6 +58,15 @@ const ManageProducts = () => {
     };
     return (
         <Container>
+            <Typography sx={{
+                py: 2,
+                mx: 'auto',
+                width: 500,
+                borderRadius: 1,
+                textAlign: 'center',
+            }}
+                variant="h3"
+            >Manage Products</Typography>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
                     <TableHead>

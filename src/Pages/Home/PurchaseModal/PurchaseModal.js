@@ -44,7 +44,7 @@ const PurchaseModal = ({ bookingOpen, handleBookingClose, singleProduct, setBook
                 singleProduct
             }
             // send to the server
-            fetch('http://localhost:5000/orders', {
+            fetch('https://safe-waters-12222.herokuapp.com/orders', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

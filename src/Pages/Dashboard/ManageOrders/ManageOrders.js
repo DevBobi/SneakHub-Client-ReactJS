@@ -37,14 +37,14 @@ const ManageOrders = () => {
     const [status, setStatus] = useState(false);
 
     useEffect(() => {
-        const url = "http://localhost:5000/allorders";
+        const url = "https://safe-waters-12222.herokuapp.com/allorders";
         fetch(url)
             .then(res => res.json())
             .then(data => setOrders(data));
     }, [status, orders]);
 
     const updateStatus = (id) => {
-        axios.put(`http://localhost:5000/updateOrder`, { id })
+        axios.put(`https://safe-waters-12222.herokuapp.com/updateOrder`, { id })
             .then(res => alert("Order Approved"))
             .then((data) => setStatus(true))
     };
@@ -52,7 +52,7 @@ const ManageOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://safe-waters-12222.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: "DELETE",
             })
@@ -69,7 +69,7 @@ const ManageOrders = () => {
     return (
         <Container>
             <Typography sx={{
-                mb: 5,
+                py: 2,
                 mx: 'auto',
                 width: 500,
                 borderRadius: 1,
@@ -78,7 +78,7 @@ const ManageOrders = () => {
                 variant="h3"
             >All Orders: {orders.length}</Typography>
             <TableContainer component={Paper}>
-                <Table sx={{ Width: 1000 }} aria-label="orders table">
+                <Table sx={{ Width: 100 }} aria-label="orders table">
                     <TableHead>
                         <TableRow>
                             <StyledTableCell>Orderd Item</StyledTableCell>

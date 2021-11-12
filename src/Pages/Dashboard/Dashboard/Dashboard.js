@@ -81,14 +81,6 @@ function Dashboard(props) {
                             <ListItemText primary="Review" />
                         </ListItem>
                     </Link>
-                    <Link style={{ textDecoration: 'none', color: 'black' }} onClick={logout}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <Logout></Logout>
-                            </ListItemIcon>
-                            <ListItemText primary="LogOut" />
-                        </ListItem>
-                    </Link>
                 </Box>}
 
                 {admin &&
@@ -135,17 +127,17 @@ function Dashboard(props) {
                                 <ListItemText primary="Make Admin" />
                             </ListItem>
                         </Link>
-                        <Link style={{ textDecoration: 'none', color: 'black' }} onClick={logout}>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Logout></Logout>
-                                </ListItemIcon>
-                                <ListItemText primary="LogOut" />
-                            </ListItem>
-                        </Link>
                     </Box>
                 }
-
+                <Divider />
+                <Link style={{ textDecoration: 'none', color: 'black' }} onClick={logout}>
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Logout></Logout>
+                        </ListItemIcon>
+                        <ListItemText primary="LogOut" />
+                    </ListItem>
+                </Link>
             </List>
         </div>
     );

@@ -21,7 +21,7 @@ const SignleProduct = () => {
     const [bookingSuccess, setBookingSuccess] = useState(false)
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://safe-waters-12222.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);

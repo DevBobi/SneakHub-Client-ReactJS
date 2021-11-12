@@ -18,7 +18,7 @@ const MakeAdmin = () => {
         const proceed = window.confirm('Are you sure you want to Make Admin?');
         if (proceed) {
             const user = { email };
-            fetch('http://localhost:5000/users/admin', {
+            fetch('https://safe-waters-12222.herokuapp.com/users/admin', {
                 method: 'PUT',
                 headers: {
                     'authorization': `Bearer ${token}`,
@@ -41,7 +41,7 @@ const MakeAdmin = () => {
         <Container>
             <Box
                 sx={{
-                    mt: 5,
+                    py: 2,
                     mx: 'auto',
                     width: 500,
                     borderRadius: 1,

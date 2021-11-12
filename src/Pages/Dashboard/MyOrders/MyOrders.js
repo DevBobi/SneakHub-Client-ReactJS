@@ -34,7 +34,7 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/myorders?email=${user.email}`;
+        const url = `https://safe-waters-12222.herokuapp.com/myorders?email=${user.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setOrders(data));
@@ -43,7 +43,7 @@ const MyOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://safe-waters-12222.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: "DELETE",
             })
@@ -60,7 +60,15 @@ const MyOrders = () => {
 
     return (
         <Container>
-            <h2>My orders: {orders.length}</h2>
+            <Typography sx={{
+                py: 2,
+                mx: 'auto',
+                width: 500,
+                borderRadius: 1,
+                textAlign: 'center',
+            }}
+                variant="h3"
+            >My Orders: {orders.length}</Typography>
             <TableContainer component={Paper}>
                 <Table sx={{ Width: 1000 }} aria-label="orders table">
                     <TableHead>

@@ -9,7 +9,7 @@ const AddProducts = () => {
 
     const onSubmit = data => {
         console.log(data);
-        axios.post('http://localhost:5000/products', data)
+        axios.post('https://safe-waters-12222.herokuapp.com/products', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Added successfully');
@@ -23,7 +23,7 @@ const AddProducts = () => {
         <Container>
             <Box
                 sx={{
-                    mt: 5,
+                    py: 2,
                     mx: 'auto',
                     width: 500,
                     borderRadius: 1,
@@ -34,7 +34,7 @@ const AddProducts = () => {
                     Add A Product
                 </Typography>
 
-                <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
+                <Box component="form" onSubmit={handleSubmit(onSubmit)} >
                     <Grid container spacing={2} sx={{ my: 3 }}>
                         <Grid item xs={12}>
                             <TextField
