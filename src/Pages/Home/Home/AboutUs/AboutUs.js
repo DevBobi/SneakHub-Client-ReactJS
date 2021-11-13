@@ -52,7 +52,7 @@ const AboutUs = () => {
                                     }}>
 
                                         <Box>
-                                            <Typography sx={{ fontWeight: 'bold' }} variant="h4" gutterBottom component="div"> Product Support</Typography>
+                                            <Typography sx={{ fontWeight: 'bold' }} variant="h4" gutterBottom component="div"> About Us</Typography>
                                             <Typography variant="body1" gutterBottom component="div"> We Are Here For You</Typography>
                                             <NavLink to="/aboutus" style={{ textDecoration: 'none' }}>
                                                 <Button variant="outlined">About Us</Button>
