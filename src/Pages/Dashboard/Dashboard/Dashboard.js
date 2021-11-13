@@ -19,9 +19,8 @@ import {
     Link,
     useRouteMatch
 } from "react-router-dom";
-import { Button, Grid } from '@mui/material';
 import AddProducts from '../AddProduct/AddProducts';
-import { Add, AdminPanelSettings, Home, Logout, ProductionQuantityLimits, ShoppingBag } from '@mui/icons-material';
+import { Home, Logout } from '@mui/icons-material';
 import MyOrders from '../MyOrders/MyOrders';
 import ManageOrders from '../ManageOrders/ManageOrders';
 import DashboardHome from '../DashboardHome/DashboardHome';
@@ -29,12 +28,20 @@ import useAuth from '../../../hooks/useAuth';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import ManageProducts from '../ManageProducts/ManageProducts';
+import PrivateRoute from '../../Login/PrivateRoute/PrivateRoute';
+import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
+import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
+import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
+import AutoAwesomeMotionOutlinedIcon from '@mui/icons-material/AutoAwesomeMotionOutlined';
+import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
+import AddReview from '../AddReview/AddReview';
 
 const drawerWidth = 220;
 
 function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+
     let { path, url } = useRouteMatch();
     const { logout, admin } = useAuth();
 
@@ -51,7 +58,7 @@ function Dashboard(props) {
                     <Link style={{ textDecoration: 'none', color: 'black' }} to='/'>
                         <ListItem button>
                             <ListItemIcon>
-                                <Home></Home>
+                                <Home color="primary" />
                             </ListItemIcon>
                             <ListItemText primary="Home" />
                         </ListItem>
@@ -67,16 +74,16 @@ function Dashboard(props) {
                     <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/myOrders`}>
                         <ListItem button>
                             <ListItemIcon>
-                                <Home></Home>
+                                <LocalGroceryStoreOutlinedIcon />
                             </ListItemIcon>
                             <ListItemText primary="My Orders" />
                         </ListItem>
                     </Link>
 
-                    <Link style={{ textDecoration: 'none', color: 'black' }} to='/'>
+                    <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addReview`}>
                         <ListItem button>
                             <ListItemIcon>
-                                <Home></Home>
+                                <RateReviewOutlinedIcon />
                             </ListItemIcon>
                             <ListItemText primary="Review" />
                         </ListItem>
@@ -88,33 +95,31 @@ function Dashboard(props) {
                         <Link style={{ textDecoration: 'none', color: 'black' }} to='/'>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <Home></Home>
+                                    <Home color="primary" />
                                 </ListItemIcon>
                                 <ListItemText primary="Home" />
                             </ListItem>
                         </Link>
-
-                        <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addProducts`}>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Add></Add>
-                                </ListItemIcon>
-                                <ListItemText primary="Add Products" />
-                            </ListItem>
-                        </Link>
-
                         <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageOrders`}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <ShoppingBag></ShoppingBag>
+                                    <ListOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="All Orders" />
+                            </ListItem>
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addProducts`}>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <LocalGroceryStoreOutlinedIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Add Products" />
                             </ListItem>
                         </Link>
                         <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageProducts`}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <ProductionQuantityLimits></ProductionQuantityLimits>
+                                    <AutoAwesomeMotionOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Manage Products" />
                             </ListItem>
@@ -122,7 +127,7 @@ function Dashboard(props) {
                         <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/makeAdmin`}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <AdminPanelSettings></AdminPanelSettings>
+                                    <PersonAddAlt1OutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Make Admin" />
                             </ListItem>
@@ -207,12 +212,15 @@ function Dashboard(props) {
             >
                 <Toolbar />
                 <Switch>
-                    <Route exact path={path}>
+                    <PrivateRoute exact path={path}>
                         <DashboardHome></DashboardHome>
-                    </Route>
-                    <Route path={`${path}/myOrders`}>
+                    </PrivateRoute>
+                    <PrivateRoute path={`${path}/myOrders`}>
                         <MyOrders></MyOrders>
-                    </Route>
+                    </PrivateRoute>
+                    <PrivateRoute path={`${path}/addReview`}>
+                        <AddReview />
+                    </PrivateRoute>
                     <AdminRoute path={`${path}/manageOrders`}>
                         <ManageOrders></ManageOrders>
                     </AdminRoute>

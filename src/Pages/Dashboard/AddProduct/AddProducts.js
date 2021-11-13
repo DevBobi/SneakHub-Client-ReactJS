@@ -20,8 +20,8 @@ const AddProducts = () => {
 
     return (
 
-        <Container>
-            <Box
+        <Box>
+            <Container
                 sx={{
                     py: 2,
                     mx: 'auto',
@@ -80,8 +80,8 @@ const AddProducts = () => {
                         style={{ backgroundColor: '#5CE7ED', color: "black" }}
                     >Proceed Make Admin</Button>
                 </Box>
-            </Box>
-        </Container>
+            </Container>
+        </Box>
     );
 };
 

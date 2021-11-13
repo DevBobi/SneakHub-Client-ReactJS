@@ -36,8 +36,11 @@ const Banner = () => {
                             </NavLink>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} md={6} style={verticalCenter}>
-                        <img style={{ minwidth: '350px', maxWidth: "500px" }} src={banner} alt="" />
+                    <Grid item xs={12} md={6} sx={{
+                        display: ' flex',
+                        alignItems: 'center'
+                    }}>
+                        <img style={{ minWidth: '300px', maxwidth: '40px', px: 3 }} src={banner} alt="" />
                     </Grid>
                 </Grid>
             </Container>

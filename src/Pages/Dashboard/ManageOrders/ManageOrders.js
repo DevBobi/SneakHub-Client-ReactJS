@@ -67,61 +67,59 @@ const ManageOrders = () => {
         }
     };
     return (
-        <Container>
+        <Box>
             <Typography sx={{
                 py: 2,
                 mx: 'auto',
-                width: 500,
-                borderRadius: 1,
                 textAlign: 'center',
             }}
                 variant="h3"
             >All Orders: {orders.length}</Typography>
-            <TableContainer component={Paper}>
-                <Table sx={{ Width: 100 }} aria-label="orders table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Orderd Item</StyledTableCell>
-                            <StyledTableCell align="right">Email</StyledTableCell>
-                            <StyledTableCell align="right">Contact</StyledTableCell>
-                            <StyledTableCell align="right">Date</StyledTableCell>
-                            <StyledTableCell align="right">Status</StyledTableCell>
-                            <StyledTableCell align="right">Action</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {orders.map((row, index) => (
-                            <StyledTableRow key={row._id}>
-                                <StyledTableCell component="th" scope="row">
-                                    {row?.singleProduct?.title}
-                                </StyledTableCell>
-                                <StyledTableCell align="right">{row.email}</StyledTableCell>
-                                <StyledTableCell align="right">{row.phone}</StyledTableCell>
-                                <StyledTableCell align="right">{row.date}</StyledTableCell>
-                                <StyledTableCell align="right">
-                                    {(row?.status === "Approved") ?
+            <Container >
+                <TableContainer sx={{ minWidth: 50 }} component={Paper}>
+                    <Table aria-label="customized table">
+                        <TableHead>
+                            <TableRow>
+                                <StyledTableCell>Orderd Item</StyledTableCell>
+                                <StyledTableCell align="left">Contact</StyledTableCell>
+                                <StyledTableCell align="left">Date</StyledTableCell>
+                                <StyledTableCell align="left">Status</StyledTableCell>
+                                <StyledTableCell align="left">Action</StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {orders.map((row, index) => (
+                                <StyledTableRow key={row._id}>
+                                    <StyledTableCell component="th" scope="row">
+                                        {row?.singleProduct?.title}
+                                    </StyledTableCell>
+                                    <StyledTableCell align="left">{row.phone}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.date}</StyledTableCell>
+                                    <StyledTableCell align="left">
+                                        {(row?.status === "Approved") ?
 
-                                        <Button color="success">{row?.status}</Button>
-                                        :
+                                            <Button color="success">{row?.status}</Button>
+                                            :
+                                            <Button
+                                                onClick={() => updateStatus(row._id)}
+                                                color="error">{row?.status}</Button>
+
+                                        }
+                                    </StyledTableCell>
+                                    <StyledTableCell align="left">
+
                                         <Button
-                                            onClick={() => updateStatus(row._id)}
-                                            color="error">{row?.status}</Button>
+                                            onClick={() => handleDelete(row?._id)}
+                                            color="error">Delete</Button>
 
-                                    }
-                                </StyledTableCell>
-                                <StyledTableCell align="right">
-
-                                    <Button
-                                        onClick={() => handleDelete(row?._id)}
-                                        color="error">Delete</Button>
-
-                                </StyledTableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </Container>
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Container>
+        </Box>
     );
 };
 

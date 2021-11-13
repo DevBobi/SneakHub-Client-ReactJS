@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Avatar, Button, Container, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -57,51 +59,51 @@ const ManageProducts = () => {
         }
     };
     return (
-        <Container>
+        <Box>
             <Typography sx={{
                 py: 2,
                 mx: 'auto',
-                width: 500,
-                borderRadius: 1,
                 textAlign: 'center',
             }}
                 variant="h3"
             >Manage Products</Typography>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Product Image</StyledTableCell>
-                            <StyledTableCell align="left">Product Title</StyledTableCell>
-                            <StyledTableCell align="left">Price</StyledTableCell>
-                            <StyledTableCell align="right">Action</StyledTableCell>
+            <Container>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 450 }} aria-label="customized table">
+                        <TableHead>
+                            <TableRow>
+                                <StyledTableCell>Product Image</StyledTableCell>
+                                <StyledTableCell align="left">Product Title</StyledTableCell>
+                                <StyledTableCell align="left">Price</StyledTableCell>
+                                <StyledTableCell align="right">Action</StyledTableCell>
 
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {products.map((row) => (
-                            <StyledTableRow key={row._id}>
-                                <StyledTableCell component="th" scope="row">
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src={row.img}
-                                        sx={{ width: 70, height: 70 }}
-                                    />
-                                </StyledTableCell>
-                                <StyledTableCell align="left">{row.title}</StyledTableCell>
-                                <StyledTableCell align="left">${row.price}</StyledTableCell>
-                                <StyledTableCell align="right">
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {products.map((row) => (
+                                <StyledTableRow key={row._id}>
+                                    <StyledTableCell component="th" scope="row">
+                                        <Avatar
+                                            alt="Remy Sharp"
+                                            src={row.img}
+                                            sx={{ width: 70, height: 70 }}
+                                        />
+                                    </StyledTableCell>
+                                    <StyledTableCell align="left">{row.title}</StyledTableCell>
+                                    <StyledTableCell align="left">${row.price}</StyledTableCell>
+                                    <StyledTableCell align="right">
 
-                                    <Button
-                                        onClick={() => handleDelete(row?._id)}
-                                        color="error">Delete</Button>
-                                </StyledTableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </Container>
+                                        <Button
+                                            onClick={() => handleDelete(row?._id)}
+                                            color="error"><DeleteOutlinedIcon /> Delete</Button>
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Container>
+        </Box>
     );
 };
 

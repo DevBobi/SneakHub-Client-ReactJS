@@ -19,8 +19,7 @@ const AdminRoute = ({ children, ...rest }) => {
                             pathname: "/",
                             state: { from: location }
                         }}
-                    ></Redirect>
-
+                    />
             }
         >
 

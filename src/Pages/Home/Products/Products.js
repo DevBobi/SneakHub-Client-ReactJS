@@ -11,15 +11,15 @@ const Products = () => {
     const [products] = useProduct();
     const newProduct = products.slice(0, 6);
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box >
             <Container>
                 <Typography sx={{ fontWeight: 600, m: 5 }} variant="h4" component="div">
                     Our Products
                 </Typography>
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                <Grid container spacing={{ xs: 3, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
                         newProduct.map(product => <Product
-                            key={product.id}
+                            key={product._id}
                             product={product}
                         ></Product>)
                     }

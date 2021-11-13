@@ -38,12 +38,12 @@ const MakeAdmin = () => {
     }
 
     return (
-        <Container>
-            <Box
+        <Box>
+            <Container
                 sx={{
                     py: 2,
                     mx: 'auto',
-                    width: 500,
+                    width: 400,
                     borderRadius: 1,
                     textAlign: 'center',
                 }}
@@ -94,8 +94,8 @@ const MakeAdmin = () => {
                         style={{ backgroundColor: '#5CE7ED', color: "black" }}
                     >Proceed Make Admin</Button>
                 </Box>
-            </Box>
-        </Container>
+            </Container>
+        </Box>
     );
 };
 

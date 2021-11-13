@@ -43,7 +43,7 @@ const Login = () => {
     }
 
     const handleSubmit = (e) => {
-        loginUser(loginData.email, loginData.password, location, history)
+        loginUser(loginData.email, loginData.password, location, history);
         e.preventDefault();
     }
 

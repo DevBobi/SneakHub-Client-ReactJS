@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Container } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
@@ -92,16 +92,16 @@ const Navigation = () => {
                             >
 
                                 {user?.email ?
-                                    <div>
+                                    <Grid>
                                         <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/dashboard'>
                                             <Button color="inherit">Dashboard</Button>
                                         </NavLink>
                                         <Button style={{ color: 'black' }} onClick={logout} color="inherit">Logout</Button>
-                                    </div>
+                                    </Grid>
                                     :
-                                    <div>
-                                        <Button style={{ color: 'black' }} color="inherit">Login</Button>
-                                    </div>}
+                                    <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/login'>
+                                        <Button color="inherit">Login</Button>
+                                    </NavLink>}
 
                             </Menu>
                         </Toolbar>
