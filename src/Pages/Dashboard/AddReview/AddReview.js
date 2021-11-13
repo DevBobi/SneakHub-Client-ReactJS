@@ -15,7 +15,7 @@ const AddReview = () => {
         data.rating = value;
         data.name = user.displayName;
         data.email = user.email;
-        axios.post('http://localhost:5000/reviews', data)
+        axios.post('https://safe-waters-12222.herokuapp.com/reviews', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Added successfully');
