@@ -1,7 +1,7 @@
 # Sneak-Hub
 ## Live site: https://sneak-hub.web.app/
 ## Description
-- This is a aneakers management related website. You can use this website in professional purpose for you community.
+- This is a Sneakers management related website. You can use this website in professional purpose for you community.
 
 ## Usage_
 - This is a single page application website.
