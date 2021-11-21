@@ -90,8 +90,8 @@ const MakeAdmin = () => {
                     </Grid>
                     <Button
                         type="submit"
-                        variant='contained'
-                        style={{ backgroundColor: '#5CE7ED', color: "black" }}
+                        color="success"
+                        variant="contained"
                     >Proceed Make Admin</Button>
                 </Box>
             </Container>

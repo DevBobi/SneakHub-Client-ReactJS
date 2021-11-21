@@ -4,6 +4,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import useProduct from '../../../hooks/useProduct';
 import bg from '../../../Images/bg_product.jpg'
+import Footer from '../../Shared/Footer/Footer';
 
 const bannerBg = {
     background: `url(${bg})`,
@@ -76,6 +77,7 @@ const AllProducts = () => {
                     }
                 </Grid>
             </Container>
+            <Footer />
         </Box>
     );
 };

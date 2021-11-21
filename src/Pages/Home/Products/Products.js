@@ -14,9 +14,9 @@ const Products = () => {
         <Box >
             <Container>
                 <Typography sx={{ fontWeight: 600, m: 5 }} variant="h4" component="div">
-                    Our Products
+                    NEW ARRIVALS
                 </Typography>
-                <Grid container spacing={{ xs: 3, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                <Grid container spacing={{ xs: 3, md: 3 }} sx={{ mb: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
                         newProduct.map(product => <Product
                             key={product._id}

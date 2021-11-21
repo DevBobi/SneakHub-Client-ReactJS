@@ -25,11 +25,11 @@ const Banner = () => {
                     <Grid item style={{ ...verticalCenter, textAlign: 'left' }} xs={12} md={6}>
                         <Box>
                             <Typography sx={{ color: 'white', fontSize: 60 }} variant="h3">
-                                Collection <br />
-                                Sneaker
+                                INTERSECTION <br />
+                                OF STYLE & SPORT.
                             </Typography>
                             <Typography variant="h6" sx={{ my: 3, fontSize: 13, fontWeigth: 300, color: 'gray' }}>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos praesentium nam maiores dolor aliquam magnam voluptas minima
+                                Whether you call them shoes, sneakers, runners, trainers, or kicks, we have you covered with the latest footwear to fit your style.
                             </Typography>
                             <NavLink to="/allProducts" style={{ textDecoration: 'none' }}>
                                 <Button variant='contained' style={{ backgroundColor: '#5CE7ED', color: "black" }}>Explore</Button>

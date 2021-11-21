@@ -8,7 +8,7 @@ const AddProducts = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
+
         axios.post('https://safe-waters-12222.herokuapp.com/products', data)
             .then(res => {
                 if (res.data.insertedId) {
@@ -75,10 +75,11 @@ const AddProducts = () => {
                         </Grid>
                     </Grid>
                     <Button
+                        fullWidth
                         type="submit"
                         variant='contained'
                         style={{ backgroundColor: '#5CE7ED', color: "black" }}
-                    >Proceed Make Admin</Button>
+                    >Add Product</Button>
                 </Box>
             </Container>
         </Box>

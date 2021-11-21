@@ -10,10 +10,7 @@ import { Container, Grid } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { NavLink } from 'react-router-dom';
-import Login from '../../Login/Login/Login';
-import Register from '../../Login/Register/Register';
 import useAuth from '../../../hooks/useAuth';
 
 
@@ -66,6 +63,9 @@ const Navigation = () => {
                                 <Box>
                                     {user?.email ?
                                         <div>
+                                            <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/allProducts'>
+                                                <Button color="inherit">Products</Button>
+                                            </NavLink>
                                             <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/dashboard'>
                                                 <Button color="inherit">Dashboard</Button>
                                             </NavLink>
@@ -93,6 +93,9 @@ const Navigation = () => {
 
                                 {user?.email ?
                                     <Grid>
+                                        <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/allProducts'>
+                                            <Button color="inherit">Products</Button>
+                                        </NavLink>
                                         <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/dashboard'>
                                             <Button color="inherit">Dashboard</Button>
                                         </NavLink>

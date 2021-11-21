@@ -15,12 +15,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {
     Switch,
-    Route,
     Link,
-    useRouteMatch
+    useRouteMatch,
 } from "react-router-dom";
 import AddProducts from '../AddProduct/AddProducts';
-import { Home, Logout } from '@mui/icons-material';
+import { Home, Logout, PaymentSharp } from '@mui/icons-material';
 import MyOrders from '../MyOrders/MyOrders';
 import ManageOrders from '../ManageOrders/ManageOrders';
 import DashboardHome from '../DashboardHome/DashboardHome';
@@ -35,6 +34,7 @@ import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined
 import AutoAwesomeMotionOutlinedIcon from '@mui/icons-material/AutoAwesomeMotionOutlined';
 import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
 import AddReview from '../AddReview/AddReview';
+import Payment from '../Payment/Payment';
 
 const drawerWidth = 220;
 
@@ -63,20 +63,20 @@ function Dashboard(props) {
                             <ListItemText primary="Home" />
                         </ListItem>
                     </Link>
-                    <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}`}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <Home></Home>
-                            </ListItemIcon>
-                            <ListItemText primary="Dashboard" />
-                        </ListItem>
-                    </Link>
                     <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/myOrders`}>
                         <ListItem button>
                             <ListItemIcon>
                                 <LocalGroceryStoreOutlinedIcon />
                             </ListItemIcon>
                             <ListItemText primary="My Orders" />
+                        </ListItem>
+                    </Link>
+                    <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/Payment`}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <PaymentSharp />
+                            </ListItemIcon>
+                            <ListItemText primary="Payment" />
                         </ListItem>
                     </Link>
 
@@ -149,12 +149,14 @@ function Dashboard(props) {
 
     const container = window !== undefined ? () => window().document.body : undefined;
 
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar
                 position="fixed"
                 sx={{
+                    backgroundColor: '#3E5561',
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
                 }}
@@ -217,6 +219,9 @@ function Dashboard(props) {
                     </PrivateRoute>
                     <PrivateRoute path={`${path}/myOrders`}>
                         <MyOrders></MyOrders>
+                    </PrivateRoute>
+                    <PrivateRoute path={`${path}/payment`}>
+                        <Payment />
                     </PrivateRoute>
                     <PrivateRoute path={`${path}/addReview`}>
                         <AddReview />

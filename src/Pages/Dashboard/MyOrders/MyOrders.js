@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Box } from '@mui/system';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -60,48 +61,70 @@ const MyOrders = () => {
 
     return (
         <Container>
-            <Typography sx={{
-                py: 2,
-                mx: 'auto',
-                width: 500,
-                borderRadius: 1,
-                textAlign: 'center',
-            }}
-                variant="h3"
-            >My Orders: {orders.length}</Typography>
-            <TableContainer component={Paper}>
-                <Table sx={{ Width: 1000 }} aria-label="orders table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Orderd Item</StyledTableCell>
-                            <StyledTableCell align="right">User</StyledTableCell>
-                            <StyledTableCell align="right">Contact</StyledTableCell>
-                            <StyledTableCell align="right">Date</StyledTableCell>
-                            <StyledTableCell align="right">Status</StyledTableCell>
-                            <StyledTableCell align="right">Action</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {orders.map((row, index) => (
-                            <StyledTableRow key={row._id}>
-                                <StyledTableCell component="th" scope="row">
-                                    {row?.singleProduct?.title}
-                                </StyledTableCell>
-                                <StyledTableCell align="right">{row.name}</StyledTableCell>
-                                <StyledTableCell align="right">{row.phone}</StyledTableCell>
-                                <StyledTableCell align="right">{row.date}</StyledTableCell>
-                                <StyledTableCell align="right">{row.status}</StyledTableCell>
-                                <StyledTableCell align="right">
-                                    <Button
-                                        onClick={() => handleDelete(row?._id)}
-                                        color="error">Remove</Button>
-                                </StyledTableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </Container>
+            {orders?.length !== 0 ?
+                <Box>
+                    <TableContainer component={Paper}>
+                        <Typography sx={{
+                            py: 2,
+                            textAlign: 'center',
+                        }}
+                            variant="h3"
+                        >My Orders: {orders.length}
+                        </Typography>
+                        <Table aria-label="orders table">
+                            <TableHead>
+                                <TableRow>
+                                    <StyledTableCell>Orderd Item</StyledTableCell>
+                                    <StyledTableCell align="right">User</StyledTableCell>
+                                    <StyledTableCell align="right">Contact</StyledTableCell>
+                                    <StyledTableCell align="right">Date</StyledTableCell>
+                                    <StyledTableCell align="right">Status</StyledTableCell>
+                                    <StyledTableCell align="right">Action</StyledTableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {orders.map((row, index) => (
+                                    <StyledTableRow key={row._id}>
+                                        <StyledTableCell component="th" scope="row">
+                                            {row?.singleProduct?.title}
+                                        </StyledTableCell>
+                                        <StyledTableCell align="right">{row.name}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.phone}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.date}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.status}</StyledTableCell>
+                                        <StyledTableCell align="right">
+                                            <Button
+                                                onClick={() => handleDelete(row?._id)}
+                                                color="error">Remove</Button>
+                                        </StyledTableCell>
+                                    </StyledTableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </Box>
+                :
+                <Box
+                    sx={{
+                        textAlign: "center",
+                    }}
+                >
+                    <Box>
+                        <Typography sx={{
+                            py: 2,
+
+                        }}
+                            variant="h4"
+                        >No Orders Found!
+                        </Typography>
+                        <img src="https://organickle.com/images/no-order.svg" alt="" />
+                    </Box>
+                </Box>
+
+
+            }
+
+        </Container >
     );
 };
 

@@ -4,27 +4,25 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Button, Container, Typography } from '@mui/material';
-import support from '../../../../Images/bg_product.jpg'
 import { NavLink } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
+    // ...theme.typography.body2,
+    // padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
 const AboutUs = () => {
     return (
-        <Container sx={{ height: '700px', display: 'flex', alignItems: 'center' }}>
-
+        <Box sx={{ py: 5, my: 5, px: 5 }}>
             <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} md={12}>
+                <Grid spacing={2}>
+                    <Grid item xs={12} md={12} >
                         <Item>
                             <Box
                                 item
-                                xs={false}
-                                sm={false}
+                                xs={12}
+                                sm={12}
                                 md={12}
                                 sx={{
                                     backgroundImage: 'url(https://cdn.shopify.com/s/files/1/0267/0211/8947/files/about.jpg?v=1569835920)',
@@ -39,11 +37,11 @@ const AboutUs = () => {
 
                                 }}
                             >
-                                <Grid container spacing={2}>
+                                <Grid spacing={2}>
 
                                     <Grid item xs={4} sx={{
                                         m: 3,
-                                        height: 200,
+                                        height: 400,
                                         // display: 'column',
                                         display: 'flex',
                                         flexDirection: 'column',
@@ -53,23 +51,21 @@ const AboutUs = () => {
 
                                         <Box>
                                             <Typography sx={{ fontWeight: 'bold' }} variant="h4" gutterBottom component="div"> About Us</Typography>
-                                            <Typography variant="body1" gutterBottom component="div"> We Are Here For You</Typography>
-                                            <NavLink to="/aboutus" style={{ textDecoration: 'none' }}>
+                                            <Typography variant="body1" gutterBottom component="div"> We believe in a world where you have total freedom to be you, without judgement. To experiment. </Typography>
+                                            <NavLink to="/" style={{ textDecoration: 'none' }}>
                                                 <Button variant="outlined">About Us</Button>
                                             </NavLink>
                                         </Box>
 
                                     </Grid>
                                 </Grid>
-
-
                             </Box>
                         </Item>
                     </Grid>
 
                 </Grid>
             </Box>
-        </Container>
+        </Box>
     );
 };
 
