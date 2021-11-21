@@ -1,10 +1,11 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
-import { Box, positions } from '@mui/system';
+import { Box } from '@mui/system';
 import React from 'react';
 import { useHistory } from 'react-router';
 import useProduct from '../../../hooks/useProduct';
 import bg from '../../../Images/bg_product.jpg'
 import Footer from '../../Shared/Footer/Footer';
+import AOS from 'aos';
 
 const bannerBg = {
     background: `url(${bg})`,
@@ -19,8 +20,8 @@ const verticalCenter = {
 
 const AllProducts = () => {
     const [products] = useProduct();
-
     const history = useHistory();
+    AOS.init();
 
     const handleDetails = (id) => {
         const uri = `/productDetail/${id}`;
@@ -28,7 +29,7 @@ const AllProducts = () => {
     }
 
     return (
-        <Box>
+        <Box >
             <Box style={bannerBg} sx={{}}>
                 <Container sx={{ flexGrow: 1 }}>
                     <Grid container spacing={2}>
@@ -46,7 +47,7 @@ const AllProducts = () => {
                 <Grid container spacing={{ xs: 2, md: 6 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
                         products.map(product => <Grid item xs={4} sm={4} md={4}>
-                            <Card sx={{ maxWidth: 400 }}>
+                            <Card sx={{ maxWidth: 400 }} data-aos="zoom-in">
                                 <CardActionArea>
                                     <CardMedia
                                         component="img"
