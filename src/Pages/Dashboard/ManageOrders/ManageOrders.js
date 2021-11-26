@@ -1,4 +1,4 @@
-import { Button, Container, Typography } from '@mui/material';
+import { Avatar, Button, Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import { styled } from '@mui/material/styles';
@@ -80,7 +80,8 @@ const ManageOrders = () => {
                     <Table aria-label="customized table">
                         <TableHead>
                             <TableRow>
-                                <StyledTableCell>Orderd Item</StyledTableCell>
+                                <StyledTableCell>Product Image</StyledTableCell>
+                                <StyledTableCell>Product Name</StyledTableCell>
                                 <StyledTableCell align="left">Contact</StyledTableCell>
                                 <StyledTableCell align="left">Date</StyledTableCell>
                                 <StyledTableCell align="left">Status</StyledTableCell>
@@ -90,6 +91,13 @@ const ManageOrders = () => {
                         <TableBody>
                             {orders.map((row, index) => (
                                 <StyledTableRow key={row._id}>
+                                    <StyledTableCell component="th" scope="row">
+                                        <Avatar
+                                            alt="Remy Sharp"
+                                            src={row?.singleProduct?.img}
+                                            sx={{ width: 70, height: 70 }}
+                                        />
+                                    </StyledTableCell>
                                     <StyledTableCell component="th" scope="row">
                                         {row?.singleProduct?.title}
                                     </StyledTableCell>

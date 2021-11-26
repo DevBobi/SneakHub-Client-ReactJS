@@ -40,11 +40,15 @@ const Navigation = () => {
                 <AppBar position="static" style={{ backgroundColor: "white", color: "black" }}>
                     <Container>
                         <Toolbar>
-                            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+
+                            <Box component="div" sx={{ flexGrow: 1 }}>
                                 <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/'>
-                                    SneakHub
+                                    <Typography variant="h4" >
+                                        SneakHub
+                                    </Typography>
                                 </NavLink>
-                            </Typography>
+                            </Box>
+
                             {isMatches ? <IconButton
                                 size="large"
                                 edge="start"
@@ -70,7 +74,7 @@ const Navigation = () => {
                                                 <Button color="inherit">Dashboard</Button>
                                             </NavLink>
 
-                                            <Button style={{ color: 'black' }} onClick={logout} color="inherit">Logout</Button>
+                                            <Button onClick={logout} color="error">Logout</Button>
                                         </div>
                                         :
                                         <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/login'>
@@ -99,7 +103,7 @@ const Navigation = () => {
                                         <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/dashboard'>
                                             <Button color="inherit">Dashboard</Button>
                                         </NavLink>
-                                        <Button style={{ color: 'black' }} onClick={logout} color="inherit">Logout</Button>
+                                        <Button variant="outlined" color="error" onClick={logout} >Logout</Button>
                                     </Grid>
                                     :
                                     <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/login'>

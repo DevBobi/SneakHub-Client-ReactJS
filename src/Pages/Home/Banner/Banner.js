@@ -6,7 +6,6 @@ import Grid from '@mui/material/Grid';
 import { Button, Container, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import Aos from 'aos';
-// import Bounce from 'react-reveal/Bounce';
 import Fade from 'react-reveal/Fade';
 
 const bannerBg = {
