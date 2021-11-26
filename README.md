@@ -1,11 +1,14 @@
 # Sneak-Hub
 ## Live site: https://sneak-hub.web.app/
+## Server Side Code: https://github.com/DevBobi/SneakHub-Server-ReactJS
 ## Description
-- This is a Niche website. This is all about mens snikers. You can use this website in professional purpose for you community.
+- This is a full stack Niche website. This website is all about men's sniker.
 
 ## Usage_
-- This is a single page application website.
-- I used Firebase authentication system.
-- This website is responsive and interactive.
-- I've used, mui express, react router, axios, context  rest api & more.
-- This site is developed by ©-devBobi
+- Users can sign up or log in using google.
+- After sign in user & admin will see dashboard in navbar.
+- Users can place and remove orders as well they can also make a quick review of the website. 
+- Admin have only access to change manage orders, order status , add new product as well can also make a new admin. 
+## Technology
+- Frontend: React Js, Material Ui,  React Router, Axios, Context Api, React Reveal, Aos & more.
+- Backend: Node Js, Express Js, MongoDB, Rest Api, JWT Token & more.
