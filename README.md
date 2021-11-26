@@ -2,7 +2,7 @@
 ## Live site: https://sneak-hub.web.app/
 ## Server Side Code: https://github.com/DevBobi/SneakHub-Server-ReactJS
 ## Description
-- This is a full stack Niche website. This website is all about men's sniker.
+- This is a full stack Niche website. This website is all about men's sneaker.
 
 ## Usage_
 - Users can sign up or log in using google.
