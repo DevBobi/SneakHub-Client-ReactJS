@@ -11,6 +11,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import { Box } from '@mui/system';
+import PopupError from '../../Popup/PopupError';
+import PopupSuccess from '../../Popup/PopupSuccess';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -45,7 +47,7 @@ const ManageOrders = () => {
 
     const updateStatus = (id) => {
         axios.put(`https://safe-waters-12222.herokuapp.com/updateOrder`, { id })
-            .then(res => alert("Order Approved"))
+            .then(res => PopupSuccess("orderApproved"))
             .then((data) => setStatus(true))
     };
 
@@ -59,7 +61,7 @@ const ManageOrders = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.deletedCount > 0) {
-                        alert('Deleted Successfully');
+                        PopupError('Order Deleted!');
                         const remainingOrders = orders.filter(order => order._id !== id)
                         setOrders(remainingOrders);
                     }

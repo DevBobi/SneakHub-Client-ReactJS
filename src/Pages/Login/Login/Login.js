@@ -29,7 +29,11 @@ const theme = createTheme();
 const Login = () => {
 
     const [loginData, setLoginData] = React.useState({});
-    const { user, signInWithGoogle, loginUser, isLoading, authError } = useAuth();
+    const { user,
+        signInWithGoogle,
+        loginUser,
+        isLoading,
+        authError } = useAuth();
 
     const location = useLocation();
     const history = useHistory();

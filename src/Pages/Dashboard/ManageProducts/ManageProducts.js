@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import { Avatar, Button, Container, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import PopupError from '../../Popup/PopupError';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -51,7 +52,7 @@ const ManageProducts = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.deletedCount > 0) {
-                        alert('Deleted Successfully');
+                        PopupError('Product Deleted!');
                         const remainingProducts = newProduct.filter(product => product._id !== id)
                         setNewProduct(remainingProducts);
                     }

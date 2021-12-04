@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, GoogleAuthProvider, updateProfile, signInWithPopup, getIdToken } from "firebase/auth";
 import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
+import PopupSuccess from '../Pages/Popup/PopupSuccess';
+import PopupError from '../Pages/Popup/PopupError';
 
 initializeFirebase();
 
@@ -27,12 +29,13 @@ const useFirebase = () => {
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
-                }).catch((error) => {
+                }).catch((err) => {
+                    PopupError(err.message);
                 });
                 history.replace('/')
             })
-            .catch((error) => {
-                setAuthError(error.message);
+            .catch((err) => {
+                PopupError(err.message);
             })
             .finally(() => setIsLoading(false));
     }
@@ -44,10 +47,11 @@ const useFirebase = () => {
             .then((userCredential) => {
                 const destination = location?.state?.from || '/dashboard';
                 history.replace(destination);
+                PopupSuccess("login");
                 setAuthError('');
             })
             .catch((error) => {
-                setAuthError(error.message);
+                PopupError(error.message);
             })
             .finally(() => setIsLoading(false));
     }
@@ -59,11 +63,12 @@ const useFirebase = () => {
                 const user = result.user;
                 console.log(user)
                 saveUser(user.email, user.displayName, 'PUT')
+                PopupSuccess("login");
                 const destination = location?.state?.from || '/dashboard';
                 history.replace(destination);
                 setAuthError('');
             }).catch((error) => {
-                setAuthError(error.message);
+                PopupError(error.message);
             })
             .finally(() => setIsLoading(false));
     }
@@ -95,9 +100,9 @@ const useFirebase = () => {
     const logout = () => {
         setIsLoading(true)
         signOut(auth).then(() => {
-
-        }).catch((error) => {
-
+            PopupSuccess("logout");
+        }).catch((err) => {
+            PopupError(err.message);
         })
             .finally(() => setIsLoading(false));
     }

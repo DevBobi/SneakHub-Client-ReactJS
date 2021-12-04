@@ -1,13 +1,12 @@
 import { Alert, Button, Collapse, Container, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import CloseIcon from '@mui/icons-material/Close';
 import useAuth from '../../../hooks/useAuth';
+import PopupSuccess from '../../Popup/PopupSuccess';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
     const [success, setSuccess] = useState(false);
-    const [open, setOpen] = React.useState(true);
     const { token } = useAuth();
 
     const handleOnBlur = e => {
@@ -31,6 +30,7 @@ const MakeAdmin = () => {
                     if (data.modifiedCount) {
                         console.log(data);
                         setSuccess(true);
+                        PopupSuccess("create admin")
                     }
                 })
             e.preventDefault();
@@ -51,28 +51,6 @@ const MakeAdmin = () => {
                 <Typography variant="h3">
                     Make Admin
                 </Typography>
-                {success &&
-                    <Box sx={{ width: '100%' }}>
-                        <Collapse in={open}>
-                            <Alert
-                                action={
-                                    <IconButton
-                                        aria-label="close"
-                                        color="inherit"
-                                        size="small"
-                                        onClick={() => {
-                                            setOpen(false);
-                                        }}
-                                    >
-                                        <CloseIcon fontSize="inherit" />
-                                    </IconButton>
-                                }
-                                sx={{ mb: 2 }}
-                            >
-                                Made Admin Successfully!
-                            </Alert>
-                        </Collapse>
-                    </Box>}
                 <Box component="form" onSubmit={handleAdminSubmit} sx={{ mt: 3 }}>
                     <Grid container spacing={2} sx={{ my: 3 }}>
                         <Grid item xs={12}>

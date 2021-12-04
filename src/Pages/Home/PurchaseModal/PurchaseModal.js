@@ -5,15 +5,18 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Grid, TextField } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
+import PopupSuccess from '../../Popup/PopupSuccess';
+
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgColor: 'background.paper',
+    width: 350,
+    backgroundColor: 'background.paper',
     border: '2px solid #000',
+    borderRadius: "5px",
     boxShadow: 24,
     p: 4,
 };
@@ -32,35 +35,34 @@ const PurchaseModal = ({ bookingOpen, handleBookingClose, singleProduct, setBook
     }
 
     const handlePurchaseSubmit = e => {
-        const proceed = window.confirm('Are you sure you want to proceed order?');
-        if (proceed) {
-            // collect data
-            const order = {
-                ...bookingInfo,
-                status: "pending",
-                email: user?.email,
-                date: new Date().toLocaleDateString(),
-                singleProduct
-            }
-            // send to the server
-            fetch('https://safe-waters-12222.herokuapp.com/orders', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(order)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.insertedId) {
-                        // window.confirm("Are you sure you want to proceed order?");
-                        setBookingSuccess(true);
-                        handleBookingClose();
-                    }
-                })
-            e.preventDefault();
+
+        // collect data
+        const order = {
+            ...bookingInfo,
+            status: "pending",
+            email: user?.email,
+            date: new Date().toLocaleDateString(),
+            singleProduct
         }
+        // send to the server
+        fetch('https://safe-waters-12222.herokuapp.com/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    PopupSuccess("booked");
+                    setBookingSuccess(true);
+                    handleBookingClose();
+                }
+            })
+        e.preventDefault();
     }
+
     return (
         <div>
             <Modal
@@ -87,33 +89,11 @@ const PurchaseModal = ({ bookingOpen, handleBookingClose, singleProduct, setBook
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
-                                    disabled
-                                    fullWidth
-                                    label="Email"
-                                    id="outlined-size-small"
-                                    name="email"
-                                    defaultValue={user.email}
-                                    size="small"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
                                     required
                                     fullWidth
                                     label="Phone"
                                     id="outlined-size-small"
                                     name="phone"
-                                    onBlur={handleOnBlur}
-                                    size="small"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    label="Address"
-                                    id="outlined-size-small"
-                                    name="address"
                                     onBlur={handleOnBlur}
                                     size="small"
                                 />
@@ -133,10 +113,10 @@ const PurchaseModal = ({ bookingOpen, handleBookingClose, singleProduct, setBook
                                 <TextField
                                     required
                                     fullWidth
-                                    label="Order date"
+                                    label="Address"
                                     id="outlined-size-small"
-                                    defaultValue={new Date().toLocaleDateString()}
-                                    disabled
+                                    name="address"
+                                    onBlur={handleOnBlur}
                                     size="small"
                                 />
                             </Grid>

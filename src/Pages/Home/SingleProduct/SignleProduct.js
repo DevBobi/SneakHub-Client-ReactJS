@@ -54,30 +54,6 @@ const SignleProduct = () => {
                                     Size: {singleProduct?.size}
                                 </Typography>
                                 <Button onClick={handleBookingOpen} variant='contained' style={{ backgroundColor: '#5CE7ED', color: "black" }}>Purchase Now</Button>
-                                <Box sx={{ mt: 3 }}>
-                                    {bookingSuccess &&
-                                        <Box sx={{ width: '100%' }}>
-                                            <Collapse in={open}>
-                                                <Alert
-                                                    action={
-                                                        <IconButton
-                                                            aria-label="close"
-                                                            color="inherit"
-                                                            size="small"
-                                                            onClick={() => {
-                                                                setOpen(false);
-                                                            }}
-                                                        >
-                                                            <CloseIcon fontSize="inherit" />
-                                                        </IconButton>
-                                                    }
-                                                    sx={{ mb: 2 }}
-                                                >
-                                                    Order Confirmed!
-                                                </Alert>
-                                            </Collapse>
-                                        </Box>}
-                                </Box>
                             </Box>
                         </Grid>
                         <Grid item xs={12} md={6} style={verticalCenter} >

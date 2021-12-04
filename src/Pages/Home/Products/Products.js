@@ -7,10 +7,25 @@ import Typography from '@mui/material/Typography';
 import useProduct from '../../../hooks/useProduct';
 import Product from '../Product/Product';
 import Bounce from 'react-reveal/Bounce';
+import { useState } from 'react';
+import { FadeLoader } from "react-spinners";
+import { useEffect } from 'react';
+import './Products.css'
 
 const Products = () => {
     const [products] = useProduct();
     const newProduct = products.slice(0, 6);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+            if (products) {
+                setLoading(false);
+            }
+        }, 800);
+    }, []);
+
     return (
         <Box >
             <Container>
@@ -19,14 +34,20 @@ const Products = () => {
                         NEW ARRIVALS
                     </Typography>
                 </Bounce>
-                <Grid container spacing={{ xs: 3, md: 3 }} sx={{ mb: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                    {
-                        newProduct.map(product => <Product
-                            key={product._id}
-                            product={product}
-                        ></Product>)
-                    }
-                </Grid>
+                {loading ? (
+                    <div className="spinner-box">
+                        <FadeLoader color="#777777" />
+                    </div>
+                ) : (
+                    <Grid container spacing={{ xs: 3, md: 3 }} sx={{ mb: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                        {
+                            newProduct.map(product => <Product
+                                key={product._id}
+                                product={product}
+                            ></Product>)
+                        }
+                    </Grid>
+                )}
             </Container>
         </Box>
     );

@@ -10,6 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
+import PopupError from '../../Popup/PopupError';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -51,7 +52,7 @@ const MyOrders = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.deletedCount > 0) {
-                        alert('Deleted Successfully');
+                        PopupError('Order Deleted!');
                         const remainingOrders = orders.filter(order => order._id !== id)
                         setOrders(remainingOrders);
                     }
