@@ -6,6 +6,7 @@ import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import useProduct from '../../../hooks/useProduct';
 import Product from '../Product/Product';
+import Bounce from 'react-reveal/Bounce';
 
 const Products = () => {
     const [products] = useProduct();
@@ -13,9 +14,11 @@ const Products = () => {
     return (
         <Box >
             <Container>
-                <Typography sx={{ fontWeight: 600, m: 5 }} variant="h4" component="div">
-                    NEW ARRIVALS
-                </Typography>
+                <Bounce left cascade>
+                    <Typography sx={{ fontWeight: 600, m: 5 }} variant="h4" component="div">
+                        NEW ARRIVALS
+                    </Typography>
+                </Bounce>
                 <Grid container spacing={{ xs: 3, md: 3 }} sx={{ mb: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
                         newProduct.map(product => <Product

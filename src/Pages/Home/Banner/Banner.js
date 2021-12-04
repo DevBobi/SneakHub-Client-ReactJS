@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import { Button, Container, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import Aos from 'aos';
-import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce';
 
 const bannerBg = {
     background: `url(${bg})`,
@@ -27,12 +27,12 @@ const Banner = () => {
                 <Grid container spacing={2}>
                     <Grid item style={{ ...verticalCenter, textAlign: 'left' }} xs={12} md={6}>
                         <Box>
-                            <Fade>
+                            <Bounce left cascade>
                                 <Typography sx={{ color: 'white', fontSize: 60 }} variant="h3">
                                     INTERSECTION <br />
                                     OF STYLE & SPORT.
                                 </Typography>
-                            </Fade>
+                            </Bounce>
                             <Typography variant="h6" sx={{ my: 3, fontSize: 13, fontWeigth: 300, color: 'gray' }}>
                                 Whether you call them shoes, sneakers, runners, trainers, or kicks, we have you covered with the latest footwear to fit your style.
                             </Typography>
@@ -46,7 +46,7 @@ const Banner = () => {
                         display: ' flex',
                         alignItems: 'center'
                     }}
-                        data-aos="flip-left"
+                        data-aos="zoom-in"
                         data-aos-easing="ease-out-cubic"
                         data-aos-duration="2000"
                     >
