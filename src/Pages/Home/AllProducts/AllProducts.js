@@ -7,7 +7,6 @@ import bg from '../../../Images/bg_product.jpg'
 import Footer from '../../Shared/Footer/Footer';
 import { FadeLoader } from "react-spinners";
 import AOS from 'aos';
-import '../Products/Products.css';
 
 const bannerBg = {
     background: `url(${bg})`,
@@ -32,7 +31,7 @@ const AllProducts = () => {
             if (products) {
                 setLoading(false);
             }
-        }, 800);
+        }, 1000);
     }, []);
 
 
@@ -62,7 +61,10 @@ const AllProducts = () => {
                         <FadeLoader color="#777777" />
                     </div>
                 ) : (
-                    <Grid container spacing={{ xs: 2, md: 6 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    <Grid
+                        data-aos="fade-up"
+                        container
+                        spacing={{ xs: 2, md: 6 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         {
                             products.map(product => <Grid item xs={4} sm={4} md={4}>
                                 <Card sx={{ maxWidth: 400 }} data-aos="zoom-in">

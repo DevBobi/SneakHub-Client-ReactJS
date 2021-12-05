@@ -14,7 +14,7 @@ import SingleProduct from './Pages/Home/SingleProduct/SignleProduct';
 import NotFound from './Pages/NotFound/NotFound';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import RotateLoader from "react-spinners/RotateLoader";
 import { useEffect } from 'react';
 import { useState } from 'react';
 
@@ -33,7 +33,7 @@ function App() {
         loading ?
 
           < div className="preloader">
-            <ClimbingBoxLoader
+            <RotateLoader
               color={"#E58F00"}
               loading={loading}
               size={15} />
