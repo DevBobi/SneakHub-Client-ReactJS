@@ -96,7 +96,7 @@ const Navigation = () => {
                             >
 
                                 {user?.email ?
-                                    <Grid>
+                                    <Grid sx={{ display: "flex", flexDirection: "column" }}>
                                         <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/allProducts'>
                                             <Button color="inherit">Products</Button>
                                         </NavLink>

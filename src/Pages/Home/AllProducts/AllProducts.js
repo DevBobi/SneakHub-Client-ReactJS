@@ -6,6 +6,7 @@ import useProduct from '../../../hooks/useProduct';
 import bg from '../../../Images/bg_product.jpg'
 import Footer from '../../Shared/Footer/Footer';
 import { FadeLoader } from "react-spinners";
+import Rating from '@mui/material/Rating';
 import AOS from 'aos';
 
 const bannerBg = {
@@ -32,7 +33,7 @@ const AllProducts = () => {
                 setLoading(false);
             }
         }, 1000);
-    }, []);
+    }, [products]);
 
 
     const handleDetails = (id) => {
@@ -86,8 +87,17 @@ const AllProducts = () => {
                                                 Available Size: {product.size}
                                             </Typography>
                                         </CardContent>
-                                        <CardActions>
-                                            <Button onClick={() => handleDetails(product?._id)} size="small" color="primary">
+                                        <CardActions
+                                            style={{ display: "flex", justifyContent: "space-between" }}>
+                                            <Rating
+                                                size="small"
+                                                value={product?.rating}
+                                                readOnly />
+
+                                            <Button
+                                                onClick={() => handleDetails(product?._id)}
+                                                size="small"
+                                                color="primary">
                                                 Purchase
                                             </Button>
                                         </CardActions>

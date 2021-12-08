@@ -4,13 +4,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import Rating from '@mui/material/Rating';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useHistory } from 'react-router';
 import { FadeLoader } from "react-spinners";
 import AOS from 'aos';
 
 const Product = ({ product }) => {
-    const { title, size, img, _id, price } = product;
+    const { title, size, img, _id, price, rating } = product;
     const history = useHistory();
     AOS.init();
 
@@ -27,7 +28,7 @@ const Product = ({ product }) => {
                 setLoading(false);
             }
         }, 1000);
-    }, []);
+    }, [product?.img]);
 
     return (
         <Grid item xs={4} sm={4} md={4} data-aos="zoom-in">
@@ -49,7 +50,7 @@ const Product = ({ product }) => {
                         <Typography gutterBottom variant="h6" component="div">
                             {title}
                         </Typography>
-                        <Typography variant="h5" color="success.dark">
+                        <Typography variant="h5" color="text.error">
                             Price: ${price}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
@@ -57,8 +58,12 @@ const Product = ({ product }) => {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
-                    <Button onClick={() => handleDetails(_id)} color="error">
+                <CardActions style={{ display: "flex", justifyContent: "space-between" }}>
+                    <Rating
+                        size="small"
+                        value={rating}
+                        readOnly />
+                    <Button onClick={() => handleDetails(_id)} color="primary">
                         Purchase
                     </Button>
                 </CardActions>

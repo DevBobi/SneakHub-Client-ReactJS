@@ -40,7 +40,7 @@ const MyOrders = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setOrders(data));
-    }, [orders]);
+    }, [user?.email]);
 
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete?');

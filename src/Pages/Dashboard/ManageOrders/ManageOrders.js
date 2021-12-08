@@ -1,6 +1,5 @@
 import { Avatar, Button, Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import useAuth from '../../../hooks/useAuth';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -34,7 +33,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const ManageOrders = () => {
-    const { user } = useAuth();
     const [orders, setOrders] = useState([]);
     const [status, setStatus] = useState(false);
 

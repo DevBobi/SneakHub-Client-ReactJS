@@ -5,7 +5,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <Box
-            sx={{ bgcolor: "black", color: "white", mt: 5 }}
+            sx={{ bgcolor: "#212121", color: "white", mt: 5 }}
             px={{ xs: 3, sm: 10 }}
             py={{ xs: 5, sm: 10 }}>
             <Container maxWidth="lg">

@@ -15,25 +15,25 @@ const bannerBg = {
 const verticalCenter = {
     display: ' flex',
     alignItems: 'center',
-    height: 650,
+    height: 500,
 
 }
 
 const Banner = () => {
     Aos.init();
     return (
-        <Box style={bannerBg} sx={{ paddingTop: "5px" }}>
+        <Box style={bannerBg} sx={{ paddingY: "50px" }}>
             <Container sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
                     <Grid item style={{ ...verticalCenter, textAlign: 'left' }} xs={12} md={6}>
-                        <Box>
+                        <Box sx={{ overflow: "hidden" }}>
                             <Bounce left cascade>
-                                <Typography sx={{ color: 'white', fontSize: 60 }} variant="h3">
+                                <Typography sx={{ color: 'white', fontSize: 60, overflow: "hidden" }} variant="h3">
                                     INTERSECTION <br />
                                     OF STYLE & SPORT.
                                 </Typography>
                             </Bounce>
-                            <Typography variant="h6" sx={{ my: 3, fontSize: 13, fontWeigth: 300, color: 'gray' }}>
+                            <Typography container variant="h6" sx={{ my: 3, fontSize: 13, fontWeigth: 300, color: 'gray' }}>
                                 Whether you call them shoes, sneakers, runners, trainers, or kicks, we have you covered with the latest footwear to fit your style.
                             </Typography>
                             <NavLink to="/allProducts" style={{ textDecoration: 'none' }}>
@@ -48,9 +48,9 @@ const Banner = () => {
                     }}
                         data-aos="zoom-in"
                         data-aos-easing="ease-out-cubic"
-                        data-aos-duration="2000"
+                        data-aos-duration="1000"
                     >
-                        <img style={{ minWidth: '300px', maxwidth: '40px', px: 3 }} src={banner} alt="" />
+                        <img style={{ minWidth: '40px', maxwidth: '350px', px: 3 }} src={banner} alt="" />
                     </Grid>
 
                 </Grid>
