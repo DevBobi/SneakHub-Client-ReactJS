@@ -62,30 +62,36 @@ const MyOrders = () => {
     };
 
     return (
-        <Box
-
-        >
+        <Box>
             {orders?.length !== 0 ?
                 <Box
+                    sx={{
+                        px: 2,
+                        mx: 'auto'
+                    }}
                 >
-                    <TableContainer Container component={Paper}>
-                        <Typography sx={{
-                            py: 2,
-                            textAlign: 'center',
-                        }}
-                            variant="h3"
-                        >My Orders: {orders.length}
-                        </Typography>
-                        <Table aria-label="orders table">
+                    <Typography sx={{
+                        textAlign: 'center',
+                        py: 2,
+                    }}
+                        variant="h3"
+                    >My Orders: {orders.length}
+                    </Typography>
+                    <TableContainer
+                        component={Paper}
+                        sx={{ minWidth: 400 }}
+                    >
+                        <Table
+                            aria-label="orders table">
                             <TableHead>
                                 <TableRow>
                                     <StyledTableCell>Product Image</StyledTableCell>
                                     <StyledTableCell>Orderd Item</StyledTableCell>
-                                    <StyledTableCell align="right">User</StyledTableCell>
-                                    <StyledTableCell align="right">Contact</StyledTableCell>
-                                    <StyledTableCell align="right">Date</StyledTableCell>
-                                    <StyledTableCell align="right">Status</StyledTableCell>
-                                    <StyledTableCell align="right">Action</StyledTableCell>
+                                    <StyledTableCell >Orderd Person</StyledTableCell>
+                                    <StyledTableCell>Contact</StyledTableCell>
+                                    <StyledTableCell>Date</StyledTableCell>
+                                    <StyledTableCell>Status</StyledTableCell>
+                                    <StyledTableCell>Action</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -101,11 +107,11 @@ const MyOrders = () => {
                                         <StyledTableCell component="th" scope="row">
                                             {row?.singleProduct?.title}
                                         </StyledTableCell>
-                                        <StyledTableCell align="right">{row.name}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.phone}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.date}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.status}</StyledTableCell>
-                                        <StyledTableCell align="right">
+                                        <StyledTableCell>{row.name}</StyledTableCell>
+                                        <StyledTableCell>{row.phone}</StyledTableCell>
+                                        <StyledTableCell>{row.date}</StyledTableCell>
+                                        <StyledTableCell>{row.status}</StyledTableCell>
+                                        <StyledTableCell>
                                             <Button
                                                 onClick={() => handleDelete(row?._id)}
                                                 color="error">

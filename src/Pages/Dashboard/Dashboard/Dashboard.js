@@ -19,7 +19,7 @@ import {
     useRouteMatch,
 } from "react-router-dom";
 import AddProducts from '../AddProduct/AddProducts';
-import { Home, Logout, PaymentSharp } from '@mui/icons-material';
+import { Home, Logout } from '@mui/icons-material';
 import MyOrders from '../MyOrders/MyOrders';
 import ManageOrders from '../ManageOrders/ManageOrders';
 import DashboardHome from '../DashboardHome/DashboardHome';
@@ -29,13 +29,13 @@ import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import ManageProducts from '../ManageProducts/ManageProducts';
 import PrivateRoute from '../../Login/PrivateRoute/PrivateRoute';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
-import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
+import ShoppingBasketRoundedIcon from '@mui/icons-material/ShoppingBasketRounded';
 import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 import AutoAwesomeMotionOutlinedIcon from '@mui/icons-material/AutoAwesomeMotionOutlined';
-import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
+import RateReviewRoundedIcon from '@mui/icons-material/RateReviewRounded';
 import AddReview from '../AddReview/AddReview';
 import Payment from '../Payment/Payment';
-
+import PaymentRoundedIcon from '@mui/icons-material/PaymentRounded';
 const drawerWidth = 220;
 
 function Dashboard(props) {
@@ -66,7 +66,7 @@ function Dashboard(props) {
                     <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/myOrders`}>
                         <ListItem button>
                             <ListItemIcon>
-                                <LocalGroceryStoreOutlinedIcon />
+                                <ShoppingBasketRoundedIcon />
                             </ListItemIcon>
                             <ListItemText primary="My Orders" />
                         </ListItem>
@@ -74,7 +74,7 @@ function Dashboard(props) {
                     <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/Payment`}>
                         <ListItem button>
                             <ListItemIcon>
-                                <PaymentSharp />
+                                <PaymentRoundedIcon />
                             </ListItemIcon>
                             <ListItemText primary="Payment" />
                         </ListItem>
@@ -83,7 +83,7 @@ function Dashboard(props) {
                     <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addReview`}>
                         <ListItem button>
                             <ListItemIcon>
-                                <RateReviewOutlinedIcon />
+                                <RateReviewRoundedIcon />
                             </ListItemIcon>
                             <ListItemText primary="Review" />
                         </ListItem>
@@ -111,7 +111,7 @@ function Dashboard(props) {
                         <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addProducts`}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <LocalGroceryStoreOutlinedIcon />
+                                    <ShoppingBasketRoundedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Add Products" />
                             </ListItem>
@@ -135,7 +135,7 @@ function Dashboard(props) {
                     </Box>
                 }
                 <Divider />
-                <Link style={{ textDecoration: 'none', color: 'black' }} onClick={logout}>
+                <Link style={{ textDecoration: 'none', color: 'red' }} onClick={logout}>
                     <ListItem button>
                         <ListItemIcon>
                             <Logout></Logout>

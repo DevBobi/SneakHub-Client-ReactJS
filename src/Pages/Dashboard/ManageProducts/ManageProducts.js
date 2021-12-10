@@ -70,7 +70,7 @@ const ManageProducts = () => {
             >Manage Products</Typography>
             <Container>
                 <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 450 }} aria-label="customized table">
+                    <Table sx={{ minWidth: 400 }} aria-label="customized table">
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell>Product Image</StyledTableCell>

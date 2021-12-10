@@ -80,7 +80,7 @@ const AllProducts = () => {
                                             <Typography gutterBottom variant="h5" component="div">
                                                 {product.title}
                                             </Typography>
-                                            <Typography variant="h4" color="text.error">
+                                            <Typography variant="h4" color="error">
                                                 $ {product.price}
                                             </Typography>
                                             <Typography variant="body2" color="text.secondary">

@@ -50,7 +50,7 @@ const Product = ({ product }) => {
                         <Typography gutterBottom variant="h6" component="div">
                             {title}
                         </Typography>
-                        <Typography variant="h5" color="text.error">
+                        <Typography variant="h5" color="error">
                             Price: ${price}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
