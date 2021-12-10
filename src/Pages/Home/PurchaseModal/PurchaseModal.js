@@ -56,7 +56,6 @@ const PurchaseModal = ({ bookingOpen, handleBookingClose, singleProduct, setBook
             .then(data => {
                 if (data.insertedId) {
                     PopupSuccess("booked");
-                    setBookingSuccess(true);
                     handleBookingClose();
                 }
             })

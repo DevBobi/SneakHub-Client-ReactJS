@@ -128,7 +128,7 @@ const Register = () => {
                                     <NavLink
                                         style={{ textDecoration: 'none' }}
                                         to='/login'>
-                                        <Button variant="text">New User? Please Register</Button>
+                                        <Button variant="text">Already have an account? Please Login In</Button>
                                     </NavLink>
                                 </Grid>
                             </Grid>

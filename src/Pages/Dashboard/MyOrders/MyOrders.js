@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
 import PopupError from '../../Popup/PopupError';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -61,10 +62,13 @@ const MyOrders = () => {
     };
 
     return (
-        <Container>
+        <Box
+
+        >
             {orders?.length !== 0 ?
-                <Box>
-                    <TableContainer component={Paper}>
+                <Box
+                >
+                    <TableContainer Container component={Paper}>
                         <Typography sx={{
                             py: 2,
                             textAlign: 'center',
@@ -104,7 +108,9 @@ const MyOrders = () => {
                                         <StyledTableCell align="right">
                                             <Button
                                                 onClick={() => handleDelete(row?._id)}
-                                                color="error">Remove</Button>
+                                                color="error">
+                                                <DeleteOutlinedIcon />
+                                            </Button>
                                         </StyledTableCell>
                                     </StyledTableRow>
                                 ))}
@@ -133,7 +139,7 @@ const MyOrders = () => {
 
             }
 
-        </Container >
+        </Box >
     );
 };
 

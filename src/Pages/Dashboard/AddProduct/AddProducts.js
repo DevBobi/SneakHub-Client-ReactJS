@@ -28,7 +28,7 @@ const AddProducts = () => {
                 sx={{
                     py: 2,
                     mx: 'auto',
-                    width: 500,
+                    minWidth: 450,
                     borderRadius: 1,
                     textAlign: 'center',
                 }}

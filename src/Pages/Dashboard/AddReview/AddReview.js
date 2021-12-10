@@ -30,7 +30,10 @@ const AddReview = () => {
                 sx={{
                     py: 2,
                     mx: 'auto',
-                    width: 500,
+                    // maxWidth: 200,
+                    minWidth: 450,
+                    padding: 10,
+                    border: "1px solid black",
                     borderRadius: 1,
                     textAlign: 'center',
                 }}
