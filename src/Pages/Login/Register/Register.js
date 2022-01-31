@@ -9,13 +9,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import useAuth from '../../../hooks/useAuth';
 import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router';
+import PopupError from '../../Popup/PopupError';
 
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
+            <Link sx={{ textDecoration: "none" }} color="inherit" href="https://sneak-hub.web.app/">
+                SneakHub
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -38,12 +39,12 @@ const Register = () => {
     }
 
     const handleSubmit = e => {
+        e.preventDefault();
         if (loginData.password !== loginData.password2) {
-            alert("Password Didn't Matched");
+            PopupError("Password Didn't Matched!");
             return
         }
         registerUser(loginData.email, loginData.password, loginData.name, history)
-        e.preventDefault();
     };
 
     return (

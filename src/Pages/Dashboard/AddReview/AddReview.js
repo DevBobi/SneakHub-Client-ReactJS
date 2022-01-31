@@ -21,62 +21,61 @@ const AddReview = () => {
                     alert('Added successfully');
                     reset();
                 }
-                console.log(data)
             })
     }
     return (
         <Box>
             <Container
-                sx={{
-                    py: 2,
-                    mx: 'auto',
-                    // maxWidth: 200,
-                    minWidth: 450,
-                    padding: 10,
-                    border: "1px solid black",
-                    borderRadius: 1,
-                    textAlign: 'center',
-                }}
+
             >
-                <Typography variant="h3">
-                    Add A Review
-                </Typography>
+                <Grid
+                    sx={{
+                        py: 2,
+                        mx: 'auto',
+                        borderRadius: 1,
+                        textAlign: 'center',
+                    }}
+                >
+                    <Typography variant="h3">
+                        Add A Review
+                    </Typography>
 
-                <Box component="form" onSubmit={handleSubmit(onSubmit)} >
-                    <Box
-                        sx={{
-                            '& > legend': { mt: 5 },
-                        }}
-                    >
-                        <Typography component="legend">Ratings</Typography>
-                        <Rating
-                            name="simple-controlled"
-                            value={value}
-                            onChange={(event, newValue) => {
-                                setValue(newValue);
+                    <Box component="form" onSubmit={handleSubmit(onSubmit)} >
+                        <Box
+                            sx={{
+                                '& > legend': { mt: 5 },
                             }}
-                        />
-                    </Box>
-                    <Grid container spacing={2} sx={{ my: 5 }}>
-                        <Grid item xs={12}>
-                            <TextField
-                                required
-                                fullWidth
-                                label="Review"
-                                variant="standard"
-                                id="standard-basic"
-                                {...register("desc")}
+                        >
+                            <Typography component="legend">Ratings</Typography>
+                            <Rating
+                                name="simple-controlled"
+                                value={value}
+                                onChange={(event, newValue) => {
+                                    setValue(newValue);
+                                }}
                             />
+                        </Box>
+                        <Grid container spacing={2} sx={{ my: 5 }}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    label="Review"
+                                    variant="standard"
+                                    id="standard-basic"
+                                    {...register("desc")}
+                                />
+                            </Grid>
                         </Grid>
-                    </Grid>
 
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant='contained'
-                        style={{ backgroundColor: '#5CE7ED', color: "black" }}
-                    >Submit</Button>
-                </Box>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant='contained'
+                            style={{ backgroundColor: '#5CE7ED', color: "black" }}
+                        >Submit</Button>
+                    </Box>
+                </Grid>
             </Container>
         </Box>
     );

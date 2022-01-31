@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-material-ui-carousel'
 import { Typography, Rating } from '@mui/material'
-
+import { FadeLoader } from "react-spinners";
 import Box from '@mui/material/Box';
 
 
@@ -13,7 +13,18 @@ const Review = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
-    console.log(reviews)
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+            if (reviews) {
+                setLoading(false);
+            }
+        }, 500);
+    }, [reviews]);
+
     return (
         <Box
             item
@@ -44,50 +55,47 @@ const Review = () => {
                     color: 'white'
                 }} gutterBottom variant="h4" component="div">
                     Testimonials
-                    {/*   <Divider variant="middle"
-                        sx={{
-
-                            color: '#6CA8F2',
-                            border: 1,
-                            mx: "auto"
-
-                        }} /> */}
                 </Typography>
+                {loading ? (
+                    <div className="spinner-box">
+                        <FadeLoader color="#777777" />
+                    </div>
+                ) : (
+                    <Carousel>
+                        {
+                            reviews?.map((item, i) => <Box
+                                sx={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    flexWrap: 'wrap',
+                                    '& > :not(style)': {
+                                        m: 1,
+                                        p: 3,
+                                        width: 500,
+                                        maxWidth: 600,
+                                        height: 'auto',
+                                        color: 'white'
+                                    },
+                                }}
+                            >
 
-                <Carousel>
-                    {
-                        reviews?.map((item, i) => <Box
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                flexWrap: 'wrap',
-                                '& > :not(style)': {
-                                    m: 1,
-                                    p: 3,
-                                    width: 500,
-                                    maxWidth: 600,
-                                    height: 'auto',
-                                    color: 'white'
-                                },
-                            }}
-                        >
-
-                            <Box elevation={3} sx={{ py: 3 }}>
-                                <Box sx={{ height: 'auto', my: 3 }} >
-                                    <Box sx={{ mt: 2 }}>
-                                        <Typography variant="h6" gutterBottom>
-                                            {item?.name}
-                                        </Typography>
-                                        <Rating name="read-only" value={item?.rating} readOnly />
-                                        <Typography variant="body1" gutterBottom>
-                                            &#10075;  {item?.desc.slice(0, 50)}&#10076;
-                                        </Typography>
+                                <Box elevation={3} sx={{ py: 3 }}>
+                                    <Box sx={{ height: 'auto', my: 3 }} >
+                                        <Box sx={{ mt: 2 }}>
+                                            <Typography variant="h6" gutterBottom>
+                                                {item?.name}
+                                            </Typography>
+                                            <Rating name="read-only" value={item?.rating} readOnly />
+                                            <Typography variant="body1" gutterBottom>
+                                                &#10075;  {item?.desc.slice(0, 50)}&#10076;
+                                            </Typography>
+                                        </Box>
                                     </Box>
                                 </Box>
-                            </Box>
-                        </Box >)
-                    }
-                </Carousel >
+                            </Box >)
+                        }
+                    </Carousel >
+                )}
             </Box >
         </Box >
     );

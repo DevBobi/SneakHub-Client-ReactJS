@@ -61,9 +61,9 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
-                console.log(user)
                 saveUser(user.email, user.displayName, 'PUT')
                 PopupSuccess("login");
+                setAuthError('');
                 const destination = location?.state?.from || '/dashboard';
                 history.replace(destination);
                 setAuthError('');

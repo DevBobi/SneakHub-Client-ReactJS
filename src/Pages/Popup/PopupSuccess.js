@@ -16,7 +16,7 @@ const PopupSuccess = (successType) => {
         title = "Successfully added a new product!";
     }
     else if (successType === "create admin") {
-        title = "Successfully created an admin!😄";
+        title = "Admin created successfully!";
     }
     return Swal.fire({
         icon: "success",

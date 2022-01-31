@@ -28,7 +28,6 @@ const MakeAdmin = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.modifiedCount) {
-                        console.log(data);
                         setSuccess(true);
                         PopupSuccess("create admin")
                     }

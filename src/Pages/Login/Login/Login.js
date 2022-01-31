@@ -15,8 +15,8 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
+            <Link sx={{ textDecoration: "none" }} color="inherit" href="https://sneak-hub.web.app/">
+                SneakHub
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
