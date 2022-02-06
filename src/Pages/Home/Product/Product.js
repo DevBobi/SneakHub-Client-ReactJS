@@ -12,6 +12,7 @@ import AOS from 'aos';
 
 const Product = ({ product }) => {
     const { title, size, img, _id, price, rating } = product;
+    const [loading, setLoading] = useState(true);
     const history = useHistory();
     AOS.init();
 
@@ -19,7 +20,6 @@ const Product = ({ product }) => {
         const uri = `/productDetail/${id}`;
         history.push(uri);
     }
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
