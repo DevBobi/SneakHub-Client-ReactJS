@@ -6,24 +6,26 @@ import Box from '@mui/material/Box';
 
 
 const Review = () => {
-    const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [err, setErr] = useState('');
 
     useEffect(() => {
         fetch('https://safe-waters-12222.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
-    }, [])
+            .catch(e => setErr(e.message))
+            .finally(() => setLoading(false))
+    }, []);
 
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            if (reviews) {
-                setLoading(false);
-            }
-        }, 500);
-    }, [reviews]);
+    // useEffect(() => {
+    //     setLoading(true);
+    //     setTimeout(() => {
+    //         if (reviews) {
+    //             setLoading(false);
+    //         }
+    //     }, 500);
+    // }, [reviews]);
 
     return (
         <Box
