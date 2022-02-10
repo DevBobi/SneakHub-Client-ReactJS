@@ -14,18 +14,9 @@ const Review = () => {
         fetch('https://safe-waters-12222.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
-            .catch(e => setErr(e.message))
+            .catch(err => setErr(err.message))
             .finally(() => setLoading(false))
     }, []);
-
-    // useEffect(() => {
-    //     setLoading(true);
-    //     setTimeout(() => {
-    //         if (reviews) {
-    //             setLoading(false);
-    //         }
-    //     }, 500);
-    // }, [reviews]);
 
     return (
         <Box

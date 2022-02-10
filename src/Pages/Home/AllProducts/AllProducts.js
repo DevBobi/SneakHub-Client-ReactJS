@@ -22,7 +22,7 @@ const verticalCenter = {
 
 const AllProducts = () => {
     AOS.init();
-    const [products] = useProduct();
+    const { products } = useProduct();
     const history = useHistory();
     const [loading, setLoading] = useState(true);
 
@@ -32,7 +32,7 @@ const AllProducts = () => {
             if (products) {
                 setLoading(false);
             }
-        }, 1000);
+        });
     }, [products]);
 
 

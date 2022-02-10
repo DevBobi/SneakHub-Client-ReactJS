@@ -12,9 +12,10 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
+
 const AboutUs = () => {
     return (
-        <Box sx={{ py: 5, my: 5, px: 5 }}>
+        <Box sx={{ py: 5, my: 5 }}>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid spacing={2}>
                     <Grid item xs={12} md={12} >
@@ -56,7 +57,6 @@ const AboutUs = () => {
                                                 <Button variant="outlined">About Us</Button>
                                             </NavLink>
                                         </Box>
-
                                     </Grid>
                                 </Grid>
                             </Box>
