@@ -35,37 +35,36 @@ const SignleProduct = () => {
     return (
         <>
             <Navigation></Navigation>
-            <Box sx={{ paddingTop: "5px" }}>
-                <Container sx={{ flexGrow: 1, p: 5 }}>
-                    <Grid container spacing={2}>
-                        <Box item style={{ ...verticalCenter, textAlign: 'left' }} xs={12} md={6}>
-                            <Box>
-                                <Typography sx={{ fontSize: 60 }} variant="h3">
-                                    {singleProduct?.title}
-                                </Typography>
-                                <Typography sx={{ fontSize: 40, color: "red" }} variant="h3">
-                                    Price: ${singleProduct?.price}
-                                </Typography>
-                                <Typography variant="h6" sx={{ my: 3, fontSize: 13, fontWeigth: 300, color: "green" }}>
-                                    Size: {singleProduct?.size}
-                                </Typography>
-                                <Button onClick={handleBookingOpen} variant='contained' style={{ backgroundColor: '#5CE7ED', color: "black" }}>Purchase Now</Button>
-                            </Box>
+            <Container sx={{ flexGrow: 1, p: 5 }}>
+                <Grid container spacing={2} sx={{ justifyContent: 'space-between' }}>
+                    <Box item style={{ ...verticalCenter, textAlign: 'left' }} xs={12} md={6}>
+                        <Box>
+                            <Typography sx={{ fontSize: 60 }} variant="h3">
+                                {singleProduct?.title}
+                            </Typography>
+                            <Typography sx={{ fontSize: 40, color: "red" }} variant="h3">
+                                Price: ${singleProduct?.price}
+                            </Typography>
+                            <Typography variant="h6" sx={{ my: 3, fontSize: 13, fontWeigth: 300, color: "green" }}>
+                                Size: {singleProduct?.size}
+                            </Typography>
+                            <Button onClick={handleBookingOpen} variant='contained' style={{ backgroundColor: '#5CE7ED', color: "black" }}>Purchase Now</Button>
                         </Box>
-                        <Box item xs={12} md={6} sx={{ pr: 5 }}>
-                            <img
-                                style={{ width: '450px' }}
-                                src={singleProduct?.img} alt="shoe"
-                            />
-                        </Box>
-                    </Grid>
-                </Container>
-                <PurchaseModal
-                    singleProduct={singleProduct}
-                    bookingOpen={bookingOpen}
-                    handleBookingClose={handleBookingClose}
-                ></PurchaseModal>
-            </Box>
+                    </Box>
+                    <Box item xs={12} md={6}>
+                        <img
+                            style={{ width: '450px' }}
+                            src={singleProduct?.img} alt="shoe"
+                        />
+                    </Box>
+                </Grid>
+            </Container>
+            <PurchaseModal
+                singleProduct={singleProduct}
+                bookingOpen={bookingOpen}
+                handleBookingClose={handleBookingClose}
+            ></PurchaseModal>
+
             <Footer />
         </>
     );
