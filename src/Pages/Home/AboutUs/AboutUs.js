@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Button, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import { style } from '@mui/system';
 
 const Item = styled(Paper)(({ theme }) => ({
     // ...theme.typography.body2,
@@ -50,7 +51,7 @@ const AboutUs = () => {
                                         alignItems: 'center'
                                     }}>
 
-                                        <Box sx={{ textAlign: 'start', marginInlineStart: 20 }}>
+                                        <Box xs={12} sx={{ textAlign: 'start', marginInlineStart: 20 }}>
                                             <Typography sx={{ fontWeight: 'bold' }} variant="h4" gutterBottom component="div"> About Us</Typography>
                                             <Typography variant="body1" gutterBottom component="div"> We believe in a world where you have total freedom to be you, without judgement. To experiment. </Typography>
                                             <NavLink to="/" style={{ textDecoration: 'none' }}>
