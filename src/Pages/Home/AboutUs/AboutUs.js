@@ -50,7 +50,7 @@ const AboutUs = () => {
                                         alignItems: 'center'
                                     }}>
 
-                                        <Box>
+                                        <Box sx={{ textAlign: 'start', marginInlineStart: 20 }}>
                                             <Typography sx={{ fontWeight: 'bold' }} variant="h4" gutterBottom component="div"> About Us</Typography>
                                             <Typography variant="body1" gutterBottom component="div"> We believe in a world where you have total freedom to be you, without judgement. To experiment. </Typography>
                                             <NavLink to="/" style={{ textDecoration: 'none' }}>

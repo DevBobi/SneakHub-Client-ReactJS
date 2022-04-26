@@ -131,7 +131,7 @@ const Login = () => {
                                 Sign In Using Google
                             </Button>
                         </Grid>
-                        {isLoading && <CircularProgress />}
+                        {isLoading && <CircularProgress sx={{ textAlign: 'center', alignItems: 'center' }} />}
                         {user?.email && <Alert severity="success">Login Successfully!</Alert>}
                         {authError && <Alert severity="error">{authError}</Alert>}
                     </Box>
