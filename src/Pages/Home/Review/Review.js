@@ -16,7 +16,7 @@ const Review = () => {
             .then(data => setReviews(data))
             .catch(err => setErr(err.message))
             .finally(() => setLoading(false))
-    }, []);
+    }, [reviews]);
 
     return (
         <Box
@@ -40,7 +40,7 @@ const Review = () => {
         >
             <Box sx={{
                 textAlign: 'center',
-                my: 5
+                my: 18
             }}>
                 <Typography sx={{
                     fontWeight: 'bold',
@@ -72,8 +72,8 @@ const Review = () => {
                                 }}
                             >
 
-                                <Box elevation={3} sx={{ py: 3 }}>
-                                    <Box sx={{ height: 'auto', my: 3 }} >
+                                <Box elevation={3} sx={{ py: 2 }}>
+                                    <Box sx={{ height: 'auto' }} >
                                         <Box sx={{ mt: 2 }}>
                                             <Typography variant="h6" gutterBottom>
                                                 {item?.name}

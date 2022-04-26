@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const AboutUs = () => {
     return (
-        <Box sx={{ py: 5, my: 5 }}>
+        <Box sx={{ py: 10 }}>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid spacing={2}>
                     <Grid item xs={12} md={12} >

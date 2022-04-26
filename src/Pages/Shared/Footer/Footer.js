@@ -5,12 +5,12 @@ import React from 'react';
 const Footer = () => {
     return (
         <Box
-            sx={{ bgcolor: "#212121", color: "white", mt: 5 }}
+            sx={{ bgcolor: "#212121", color: "white" }}
             px={{ xs: 3, sm: 10 }}
             py={{ xs: 5, sm: 10 }}>
             <Container maxWidth="lg">
-                <Grid container spacing={5}>
-                    <Grid item xs={12} sm={4}>
+                <Grid container spacing={5} sx={{ pt: 5 }}>
+                    <Grid item xs={12} sm={4} >
                         <Box borderBottom={1}>Help</Box>
                         <Box>
                             <Typography variant="body1">
@@ -61,7 +61,7 @@ const Footer = () => {
                         </Box>
                     </Grid>
                 </Grid>
-                <Box textAlign="center" pt={{ xs: 5, sm: 5 }} pb={{ xs: 5, sm: 0 }}>SneakHub &reg;{new Date().getFullYear()}</Box>
+                <Box textAlign="center" pt={{ xs: 5, sm: 5 }} pb={{ xs: 5, sm: 0, }}>SneakHub &reg;{new Date().getFullYear()}</Box>
             </Container>
         </Box>
     );
